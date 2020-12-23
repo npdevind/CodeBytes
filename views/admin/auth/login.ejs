@@ -1,0 +1,39 @@
+<%- include ('../layouts/login_header') %>
+
+<link rel="stylesheet" href="<%=baseurl%>admin/assets/css/login.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=title%></title>
+</head>
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="<%=baseurl%>cdbts.png" id="icon" alt="User Icon" />
+      </div>
+
+      <!-- Login Form -->
+      <form novalidate action="" method="post" id="formLogin">
+        <input type="text" class="fadeIn second" name="username" placeholder="Username">
+        <input type="password" class="fadeIn third" name="password" placeholder="Password">
+        <input type="submit" class="fadeIn fourth" value="Sign">
+        <label class="error"><%- include ('../layouts/op_message') %></label>
+      </form>
+
+      <!-- Remind Passowrd -->
+      <!-- <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div> -->
+
+    </div>
+  </div>
+</body>
+</html>
+<%- include ('../layouts/login_footer') %>

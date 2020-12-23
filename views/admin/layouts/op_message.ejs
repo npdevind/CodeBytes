@@ -1,0 +1,35 @@
+<% if(typeof s_msg !== 'undefined' && s_msg!='') {%>
+    <div class="succ_msg msg col-md-12">  
+     <img src="<%=baseurl%>admin/assets/img/check-circle.gif" height="50px" width="50px"> <%=s_msg%>
+     </div>
+ <%}%>             
+ <% if(typeof e_msg !== 'undefined' && e_msg!='') {%>
+     <div class="succ_err msg">
+         <img src="<%=baseurl%>admin/assets/img/animated_teaser.gif" height="50px" width="50px"> <%=e_msg%>
+     </div>
+ <% }%>
+ <style type="text/css">
+ .succ_msg, .succ_err{
+     position: relative;
+     bottom: -10px;
+     background-color: #00b52a;
+     color: #fff;
+     height: 54px;
+     padding: 2px;
+     border-radius: 4px;   
+     font-size: 22px;
+     }
+ .succ_err{
+     position: relative;
+     bottom: -10px;
+     background-color: #fa5210;
+     color: #fff;
+     height: 54px;
+     padding: 2px;
+     border-radius: 4px;  
+     font-size: 22px;
+     }
+ @media(max-width:767px){.succ_msg{ position: relative;};.succ_err{ position: relative;};}    
+ </style>
+ 
+ 
