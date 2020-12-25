@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         allowNull: true
       },
+      name:{
+        type: DataTypes.STRING(255),
+        allowNull: true
+      },
       email:{
         type: DataTypes.STRING(255),
         allowNull: false,
@@ -19,30 +23,18 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         allowNull: true
       },
-      name:{
-        type: DataTypes.STRING(255),
-        allowNull: true
-      },
-      mobile:{
-        type: DataTypes.STRING(255),
-        allowNull: true
-      },
       image:{
         type: DataTypes.STRING(255),
         allowNull:true
       },
-      role: {
-        type:DataTypes.INTEGER(11),
-        allowNull:true
-      },
-      active:{
+      status:{
         type: DataTypes.ENUM('Yes','No','Blocked'),
         defaultValue: 'No',
         allowNull: false
       },
       createdBy: {
         type: DataTypes.STRING(255),
-        allowNull:false
+        allowNull:true
       },
       updatedBy:{
         type: DataTypes.STRING(255),

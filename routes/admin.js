@@ -86,6 +86,13 @@ router.get('/logout', checkAdminLogin, middleHandler, auth.logout);
 const dashboard = require('../controller/admin/dashboardController');
 router.get('/dashboard', checkAdminLogin, middleHandler, dashboard.loadDashboardPage);
 
-
+const adminController = require('../controller/admin/adminController');
+//////////////////////////////////// Admin Start ////////////////////////////////////////////////////////
+router.get('/admin-user/list', checkAdminLogin, middleHandler, adminController.list);
+router.get('/admin-user/:admin_user_id?', checkAdminLogin, middleHandler, adminController.load);
+router.post('/admin-user', checkAdminLogin, middleHandler, adminController.saveOrUpdate);
+router.get('/admin-user/delete/:admin_user_id?', checkAdminLogin, middleHandler, adminController.delete);
+router.post('/admin-user/admin-set-password', checkAdminLogin, middleHandler, adminController.setPassword);
+//////////////////////////////////// Admin ends ////////////////////////////////////////////////////////
 
 module.exports = router;

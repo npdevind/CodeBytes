@@ -1,0 +1,110 @@
+<%- include ../partials/header %>
+<%- include ../partials/sidebar %>
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><%= title %></h1>
+                </div> 
+                <div id="menu-outer" style="display: inline-block;text-align: right;width: 100%;position: relative;bottom: 21px;">
+                    <ul id="horizontal-list">
+                        <li class="st"><a href="<%= adminbaseurl %>dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                        <li class="st1"><a><i class="fas fa-list"></i> <%= title %></a></li>
+                        <li class="st"><a href="<%= adminbaseurl %>admin-user/"><i class="fas fa-plus"></i> Add Admin</a> </li>
+                    </ul>
+                </div>               
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <%- include ../flashMessage %>
+        </div>
+    </section>
+    
+   
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card">
+                        <!-- <div class="card-header">
+                            <a href="<%= adminbaseurl %>admin-user/" class="admin-add-btn btn-sm"><i class="fas fa-plus"></i> Add Admin</a>
+                        </div> -->
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="adminTable" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Profile Pic</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center" style="width: 180px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% var i=1; arrAdminData.forEach(function(val){ %>
+                                        <tr>
+                                            <td class="text-center">
+                                                <%
+                                                var image = 'Admin/'+val.admin_id+'/'+val.image;
+                                                if(helper.isFileExistsIn(image)) image = baseurl +'web-contents/'+  image;
+                                                else image = baseurl + "web-contents/user.png";
+                                                %>
+                                                <img src="<%= image %>" class="oc-profile-picture" style="width: 50px; height: 50px;">
+                                            </td>
+                                            <td class="text-center"><%= val.username %></td>
+                                            <td class="text-center"><%= val.email %></td>
+                                            <td class="text-center"> <%= val.status %></td>
+                                            <td class="project-actions text-right">
+                                                <a class="btn btn-info btn-sm" href="<%= adminbaseurl%>admin-user/<%= val.admin_id %>"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" href="<%= adminbaseurl%>admin-user/delete/<%= val.admin_id %>"><i class="fas fa-trash"></i>
+                                                    Delete</a>
+                                            </td>
+                                        </tr>
+                                    <% i++ })%>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<%- include ../partials/footer %>
+
+<!-- DataTables -->
+<link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script>
+$(function () {
+    $('#adminTable').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
+    });
+});
+</script>

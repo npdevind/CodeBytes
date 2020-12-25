@@ -21,17 +21,16 @@ exports.checkLogin = async function(req, res, next) {
     var password = req.body.password;
 
     if(username != '' && password != '') {
-        var admin = await models.Admin.findOne({where:{[Op.or]: [{ email: username }, { username: username }],active:"Yes"}});
+        var admin = await models.Admin.findOne({where:{[Op.or]: [{ email: username }, { username: username }],status:"Yes"}});
         if(admin) {
             bcrypt.compare(password, admin.password, function(err, result) {
                 if(err) {
-                    req.flash('err',"Invalid username and password!");
+                    req.flash('err',"Invalid password!");
                     return res.redirect("login");
                 } 
                 
                 if(result) {
-                    req.session.admin = admin; 
-                    console.log("--->--->---->"+req.session.admin);
+                    req.session.admin = admin;
                     return res.redirect('dashboard');
                 } else {
                     req.flash('err',"Invalid username and password!");
@@ -39,7 +38,7 @@ exports.checkLogin = async function(req, res, next) {
                 }
             });
         } else {
-            req.flash('err',"Invalid username and password!");
+            req.flash('err',"Invalid username!");
             return res.redirect("login");
         }
     } else {
