@@ -1,141 +1,85 @@
-<%- include ../layouts/header %>
-<%- include ../layouts/sidebar %>
+<%- include ('../layouts/header') %>
+  <%- include ('../layouts/sidebar') %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet"
+      href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+      integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
 
-
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <main class="page-content">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1><%=title%></h1>            
-          </div> 
-          <div id="menu-outer" style="position: relative;left: 215px;top: 13px;">
-            <ul id="horizontal-list">
-                <li class="st"><a href="<%= adminbaseurl %>dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="st"><a href="<%= adminbaseurl %>admin-user/list"><i class="fas fa-list"></i> Admin List</a></li>
-                <li class="st1"><a><%if(arrAdminData ==''){%><i class="fas fa-plus"></i><%}else{%><i class="fas fa-edit"></i> <%}%> <%=title%></a> </li>
-            </ul>
-          </div>        
-        </div>
-      </div>
-    <div class="col-sm-12">
-      <%- include ../flashMessage %>
-    </div>
-      
-    </section>
-    
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card"> 
-                <!-- <div class="card-header">
-                    <a href="<%= adminbaseurl %>admin-user/list" class="admin-add-btn btn-sm" ><i class="fas fa-list"></i> Admin List</a>
-                </div> -->
-              <!-- form start -->
-              <form novalidate name="admin-form" id="admin_common_form" class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="<%= adminbaseurl %>admin-user">
-                <div class="card-body row">
-                  <div class="form-group col-md-6">
-                    <label>User Name<span class="req"> *</span></label>
-                    <input  onkeypress="return /[a-zA-Z\s-, ]/i.test(event.key)" type="text" class="form-control" id="username" name="username" placeholder="Enter full name" value="<%=arrAdminData ? arrAdminData.username : '' %>">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Email<span class="req"> *</span></label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<%=arrAdminData ? arrAdminData.email : '' %>">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Password<span class="req"> *</span></label>
-                    <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" type="password" class="form-control" id="password" name="password" placeholder="Password" value="<%=arrAdminData ? arrAdminData.password : '' %>" minlength="8" required>
-                    <% if(arrAdminData.length <= 0){ %>
-                      <span toggle="#password" class="fa fa-lg fa-eye field-icon toggle-password"></span>
-                     <% } %>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Full Name<span class="req"> *</span></label>
-                    <input  onkeypress="return /[a-zA-Z\s-, ]/i.test(event.key)" type="text" class="form-control" id="name" name="name" placeholder="Enter full name" value="<%=arrAdminData ? arrAdminData.name : '' %>">
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Status</label>
-                      <select class="form-control" name="status">
-                        <option value=''>choose....</option>
-                        <option <% if(arrAdminData.status=='Yes'){ %>selected="selected" <% }%> value="Active">Yes</option>
-                        <option <% if(arrAdminData.status=='No'){ %>selected="selected" <% }%> value="Inactive">No</option>
-                        <option <% if(arrAdminData.status=='Blocked'){ %>selected="selected" <% }%> value="Inactive">Blocked</option>
-                      </select>
+        <h2>
+          <%=title%>
+        </h2>
+        <div><a href="<%=adminbaseurl%>admin-user/list"> Admin List </a>
+          <hr>
+          <div class="container">
+            <form class="form-horizontal" role="form" method="POST" action="/register">
+              <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                  <label for="name">Name</label>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="John Doe" required >
                     </div>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputFile">Image<span class="req"> *</span></label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image" name="image"  accept="image/*"  onchange="preView()"  value="<%= arrAdminData ? arrAdminData.image : '' %>">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                  <label for="email">E-Mail Address</label>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                      <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                  <label for="password">Password</label>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Password"
+                        required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                  <label for="password">Confirm Password</label>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem">
+                        <i class="fa fa-repeat"></i>
                       </div>
-                    </div>                    
-                    <div class="upload_img01">
-                      <% if(arrAdminData.image !='' && arrAdminData.image != null){%>
-                        <img id="preview" src="<%= baseurl + 'web-contents/Admin/'+arrAdminData.admin_id+'/' + arrAdminData.image %>" style="width: 120px; margin-top: 10px;" class="img-thumbnail" />
-                        <% }else{ %>
-                          <img id="preview" src="<%= baseurl + 'admin/user.png' %>" style="width: 120px; margin-top: 10px;" class="img-thumbnail" />
-                        <% } %>
+                      <input type="password" name="password-confirmation" class="form-control" id="password-confirm"
+                        placeholder="Password" required>
                     </div>
                   </div>
                 </div>
-                <!-- /.card-body -->
-                <input type="hidden" name="form_admin_id" value="<%= arrAdminData ? arrAdminData.admin_id : '' %>">
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" style="float: right;"><%= arrAdminData ? 'Update' : 'Submit' %></button>
+              </div>
+              <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Submit</button>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
-      </div>
-    </section>
-  </div>
-</div>
 
-<%- include ../layouts/footer %>
-<script src="<%=baseurl%>plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="<%=baseurl%>plugins/jquery-validation/additional-methods.min.js"></script>
-<script src="<%=baseurl%>build/js/form-validation.js"></script>
-
-<script>
-  function preView() {
-    var fileInput = document.getElementById('image');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-    if (!allowedExtensions.exec(filePath)) {
-      fileInput.value = '';
-      return false;
-    } else {
-      //Image preview
-      if (fileInput.files && fileInput.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function () {
-          var output = document.getElementById('preview');
-          output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-        $("#image-error").remove();
-      };
-    }
-    // $("#x_content").click(); 
-  }
-</script>
-<script>
-  $(".toggle-password").click(function() {
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-      input.attr("type", "text");
-    } else {
-      input.attr("type", "password");
-    }
-  });
-  </script>
+          <%- include ('../layouts/footer') %>
