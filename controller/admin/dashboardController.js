@@ -21,7 +21,7 @@ var sequelize = new Sequelize(
 exports.loadDashboardPage = async function(req,res){
     console.log("Successfully enter dashboard");
     return res.render('admin/dashboard/page', {
-        title:'Admin List',
+        title:'Dashboard',
         s_msg: req.flash('info'),
         e_msg: req.flash('err')
     });

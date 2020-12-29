@@ -57,7 +57,6 @@ router.use(expressValidator())
 
 
 async function middleHandler(req, res, next) {
-    console.log("---------------------"+req.session.admin);
     models.Admin.findOne({ where: { username: (req.session.admin.username) } }).then(async function (user) {
         if (user) {
             res.locals.sessionAdminFullName = user.name;
@@ -86,8 +85,9 @@ router.get('/logout', checkAdminLogin, middleHandler, auth.logout);
 const dashboard = require('../controller/admin/dashboardController');
 router.get('/dashboard', checkAdminLogin, middleHandler, dashboard.loadDashboardPage);
 
-const adminController = require('../controller/admin/adminController');
+
 //////////////////////////////////// Admin Start ////////////////////////////////////////////////////////
+const adminController = require('../controller/admin/adminController');
 router.get('/admin-user/list', checkAdminLogin, middleHandler, adminController.list);
 router.get('/admin-user/:admin_user_id?', checkAdminLogin, middleHandler, adminController.load);
 router.post('/admin-user', checkAdminLogin, middleHandler, adminController.saveOrUpdate);

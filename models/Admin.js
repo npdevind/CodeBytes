@@ -27,6 +27,10 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         allowNull:true
       },
+      mobile:{
+        type: DataTypes.STRING(255),
+        allowNull:true
+      },
       status:{
         type: DataTypes.ENUM('Yes','No','Blocked'),
         defaultValue: 'No',
