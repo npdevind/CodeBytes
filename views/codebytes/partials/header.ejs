@@ -10,23 +10,23 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="codesbyte/assets/img/favicon.ico" rel="icon">
-  <link href="codesbyte/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<%= baseurl %>codesbyte/assets/img/favicon.ico" rel="icon">
+  <link href="<%= baseurl %>codesbyte/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="codesbyte/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="codesbyte/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="codesbyte/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="codesbyte/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="codesbyte/assets/vendor/owl.carousel/codesbyte/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="codesbyte/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="codesbyte/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/owl.carousel/codesbyte/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="codesbyte/assets/css/style.css" rel="stylesheet">
+  <link href="<%= baseurl %>codesbyte/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,20 +36,18 @@
     <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><span>CodesByte</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="codesbyte/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="text-light"><a href="/home"><span><a href="/home"><img src="<%= baseurl %>codesbyte-logo.png" alt="" class="img-fluid"></a></span></a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#index.html">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li class="active"><a href="#home">Home</a></li>
+          <li ><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+          <!-- <li class="drop-down"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="drop-down"><a href="#">Drop Down 2</a>
@@ -65,10 +63,10 @@
               <li><a href="#">Drop Down 4</a></li>
               <li><a href="#">Drop Down 5</a></li>
             </ul>
-          </li>
+          </li> -->
           <li><a href="#contact">Contact</a></li>
 
-          <li class="get-started"><a href="#about">Get Started</a></li>
+          <li class="get-started"><a href="#contact">Connect With Us</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
