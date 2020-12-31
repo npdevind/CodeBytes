@@ -1,6 +1,6 @@
 let models = require("../../models");
 const { Op } = require("sequelize");
-
+var helper = require('../../helpers/helper_function');
 var config = require('../../config/config.json');
 const Sequelize = require("sequelize");
 var sequelize = new Sequelize(
@@ -20,10 +20,13 @@ var sequelize = new Sequelize(
 
 exports.loadDashboardPage = async function(req,res){
     console.log("Successfully enter dashboard");
+    var adminTableDetails = await models.Admin.findOne({where:{status:'Yes'}});
     return res.render('admin/dashboard/page', {
+        adminTableDetails:adminTableDetails,
         title:'Dashboard',
         s_msg: req.flash('info'),
-        e_msg: req.flash('err')
+        e_msg: req.flash('err'),
+        helper: helper
     });
 }
 

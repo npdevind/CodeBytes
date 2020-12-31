@@ -95,4 +95,20 @@ router.get('/admin-user/delete/:admin_user_id?', checkAdminLogin, middleHandler,
 router.post('/admin-user/admin-set-password', checkAdminLogin, middleHandler, adminController.setPassword);
 //////////////////////////////////// Admin ends ////////////////////////////////////////////////////////
 
+//////////////////////////////////// Contact Start ////////////////////////////////////////////////////////
+const contactController = require('../controller/admin/contactusController');
+router.get('/contactus/:contact_id?', checkAdminLogin, middleHandler, contactController.load);
+router.post('/contactus', checkAdminLogin, middleHandler, contactController.saveOrUpdate);
+router.get('/contactus/delete/:contact_id?', checkAdminLogin, middleHandler, contactController.delete);
+//////////////////////////////////// Contact ends ////////////////////////////////////////////////////////
+
+//////////////////////////////////// CLient Start ////////////////////////////////////////////////////////
+const clientController = require('../controller/admin/clientController');
+router.get('/client/list', checkAdminLogin, middleHandler, clientController.list);
+router.get('/client/:client_id?', checkAdminLogin, middleHandler, clientController.load);
+router.post('/client', checkAdminLogin, middleHandler, clientController.saveOrUpdate);
+router.get('/client/delete/:client_id?', checkAdminLogin, middleHandler, clientController.delete);
+//////////////////////////////////// Client ends ////////////////////////////////////////////////////////
+
+
 module.exports = router;
