@@ -71,6 +71,8 @@ app.use('/', codebytes);
 var admin = require('./routes/admin');
 app.use('/admin', admin);
 
+var email = require('./routes/contactusemail');
+app.use('/', email);
 
 
 app.use(expressValidator()); // Add this after the bodyParser middlewares!

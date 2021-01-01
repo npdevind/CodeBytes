@@ -24,6 +24,7 @@
     "formidable": "^1.2.2",
     "fs-extra": "^9.0.1",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

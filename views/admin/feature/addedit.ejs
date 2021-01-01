@@ -14,7 +14,9 @@
     <h2>
       <%=title%>
     </h2>
-    <div><a href="<%=adminbaseurl%>feature/list"> Feature List </a>
+    <div>
+      <a href="<%=adminbaseurl%>feature/list"> Feature List </a>
+      <%- include ('../flashMessage') %>
       <hr>
       
       
@@ -30,81 +32,21 @@
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                   <input type="text" name="name" class="form-control" id="name" placeholder="John Doe"
-                    value="<%=arrAdminData ? arrAdminData.name : '' %>" required>
+                    value="<%=arrFeatureData ? arrFeatureData.name : '' %>" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 field-label-responsive">
-              <label for="name">Feature Title</label>
+              <label for="feature_title">Feature Title</label>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                  <input type="text" name="feature_title" class="form-control" id="feature_title" placeholder="title"
-                    value="<%=arrAdminData ? arrAdminData.username : '' %>" required>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="email">E-Mail Address</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                  <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com"
-                    value="<%=arrAdminData ? arrAdminData.email : '' %>" required>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="password">Password</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group has-danger">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Password" onChange="onChange()"
-                    value="<%=arrAdminData ? arrAdminData.password : '' %>" required>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="password">Confirm Password</label>
-
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem">
-                    <i class="fa fa-repeat"></i>
-                  </div>
-                  <input type="password" name="confirm_password" class="form-control" id="confirm_password"
-                    placeholder="Confirm Password" onChange="onChange()" value="<%=arrAdminData ? arrAdminData.confirm_password : '' %>" required>
-                
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="mobile">Mobile No</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
-                  <input type="text" name="mobile" class="form-control" id="mobile" placeholder="your mobile no"
-                    value="<%=arrAdminData ? arrAdminData.mobile : '' %>" required>
+                  <input type="text" name="feature_title" class="form-control" id="feature_title" placeholder="Title"
+                    value="<%=arrFeatureData ? arrFeatureData.feature_title : '' %>" required>
                 </div>
               </div>
             </div>
@@ -115,46 +57,49 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
                   <select class="form-control" name="status">
                     <option value=''>choose....</option>
-                    <option <% if(arrAdminData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
+                    <option <% if(arrFeatureData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
                     </option>
-                    <option <% if(arrAdminData.status=='No'){ %>selected="selected" <% }%> value="No">
+                    <option <% if(arrFeatureData.status=='No'){ %>selected="selected" <% }%> value="No">
                       No</option>
-                    <option <% if(arrAdminData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
+                    <option <% if(arrFeatureData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
                     </option>
                   </select>
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="exampleInputFile">Image</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="image" name="image" accept="image/*"
-                  onchange="preView()" value="<%= arrAdminData ? arrAdminData.image : '' %>">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="image">Logo</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"></div>
+                  <input type="file" class="form-group" id="image" name="image" accept="image/*" onchange="preView()"
+                    value="<%= arrFeatureData ? arrFeatureData.image : '' %>">
+                  <% if(arrFeatureData.image !='' && arrFeatureData.image != null){%>
+                  <img id="preview"
+                    src="<%= baseurl + 'web-contents/Feature/'+arrFeatureData.feature_id+'/' + arrFeatureData.image %>"
+                    style="height:80px;width:80px;" class="img-thumbnail" />
+                  <% }else{ %>
+                  <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"
+                    class="img-thumbnail" />
+                  <% } %>
+                </div>
               </div>
             </div>
           </div>
-          <div class="upload_img01">
-            <% if(arrAdminData.image !='' && arrAdminData.image != null){%>
-            <img id="preview"
-              src="<%= baseurl + 'web-contents/Admin/'+arrAdminData.admin_id+'/' + arrAdminData.image %>"
-              style="width: 120px; margin-top: 10px;" class="img-thumbnail" />
-            <% }else{ %>
-            <img id="preview" src="<%= baseurl + 'admin/user.png' %>" style="width: 120px; margin-top: 10px;"
-              class="img-thumbnail" />
-            <% } %>
-          </div>
           <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6">
-              <input type="hidden" name="form_admin_id" value="<%= arrAdminData ? arrAdminData.admin_id : '' %>">
-              <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i>
-                <%= arrAdminData ? 'Update' : 'Submit' %></button>
+            <div class="col-md-12">
+              <input type="hidden" name="form_feature_id" value="<%= arrFeatureData ? arrFeatureData.feature_id : '' %>">
+              <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
+                <%= arrFeatureData ? 'Update' : 'Submit' %></button>
             </div>
           </div>
         </form>
@@ -185,14 +130,4 @@
           // $("#x_content").click(); 
         }
       </script>
-      <script>
-        function onChange() {
-          const password = document.querySelector('input[name=password]');
-          const confirm = document.querySelector('input[name=confirm_password]');
-          if (confirm.value === password.value) {
-            confirm.setCustomValidity('');
-          } else {
-            confirm.setCustomValidity('Passwords do not match');
-          }
-        }
-      </script>
+     

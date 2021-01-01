@@ -110,5 +110,14 @@ router.post('/client', checkAdminLogin, middleHandler, clientController.saveOrUp
 router.get('/client/delete/:client_id?', checkAdminLogin, middleHandler, clientController.delete);
 //////////////////////////////////// Client ends ////////////////////////////////////////////////////////
 
+//////////////////////////////////// Feature Start ////////////////////////////////////////////////////////
+const featureController = require('../controller/admin/featureController');
+router.get('/feature/list', checkAdminLogin, middleHandler, featureController.list);
+router.get('/feature/:feature_id?', checkAdminLogin, middleHandler, featureController.load);
+router.post('/feature', checkAdminLogin, middleHandler, featureController.saveOrUpdate);
+router.get('/feature/delete/:feature_id?', checkAdminLogin, middleHandler, featureController.delete);
+//////////////////////////////////// Feature ends ////////////////////////////////////////////////////////
+
+
 
 module.exports = router;
