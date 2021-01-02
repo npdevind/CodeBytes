@@ -35,7 +35,7 @@
                         <td class="text-center"><%= i; %> <%! i++; %> </td>
                         <td class="text-center"> <%
                             var screen_shot = 'Portfolio/'+val.portfolio_id+'/'+val.screen_shot;
-                            if(helper.isFileExistsIn(screen_shot)) screen_shot = baseurl +'web-contents/'+  screen_shot;
+                            if(helper.isFileExistsIn(screen_shot)) screen_shot = adminbaseurl +'web-contents/'+  screen_shot;
                             else screen_shot = baseurl + "web-contents/user.png";
                             %>
                             <img src="<%= screen_shot %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>

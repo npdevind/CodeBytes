@@ -99,7 +99,7 @@ exports.saveOrUpdate = async function (req, res) {
             }).then(function (port_crt) {
                 if (port_crt) {
                     if (files.screen_shot[0] != '' && files.screen_shot[0] != null) {
-                        helper.createDirectory('public/web-contents/Portfolio/' + port_crt.portfolio_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Portfolio/' + port_crt.portfolio_id + '/');
                         var temp_path = files.screen_shot[0].path;
                         var target_path = 'Portfolio/' + port_crt.portfolio_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);
@@ -125,7 +125,7 @@ exports.saveOrUpdate = async function (req, res) {
             }, { where: { portfolio_id: portfolio_id } }).then(function (port_upd) {
                 if (port_upd) {
                     if (files.screen_shot[0] != '' && files.screen_shot[0] != null) {
-                        helper.createDirectory('public/web-contents/Portfolio/' + portfolio_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Portfolio/' + portfolio_id + '/');
                         var temp_path = files.screen_shot[0].path;
                         var target_path = 'Portfolio/' + portfolio_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);

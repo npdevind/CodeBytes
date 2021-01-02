@@ -101,7 +101,7 @@ exports.saveOrUpdate = async function (req, res) {
                 }).then(function (team_crt) {
                     if (team_crt) {
                         if (files.dp[0] != '' && files.dp[0] != null) {
-                            helper.createDirectory('public/web-contents/Team/' + team_crt.team_id + '/');
+                            helper.createDirectory('public/admin/web-contents/Team/' + team_crt.team_id + '/');
                             var temp_path = files.dp[0].path;
                             var target_path = 'Team/' + team_crt.team_id + '/' + userFinalImage;
                             helper.uploadFiles(temp_path, target_path);
@@ -129,7 +129,7 @@ exports.saveOrUpdate = async function (req, res) {
             }, { where: { team_id: team_id } }).then(function (team_upd) {
                 if (team_upd) {
                     if (files.dp[0] != '' && files.dp[0] != null) {
-                        helper.createDirectory('public/web-contents/Team/' + team_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Team/' + team_id + '/');
                         var temp_path = files.dp[0].path;
                         var target_path = 'Team/' + team_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);

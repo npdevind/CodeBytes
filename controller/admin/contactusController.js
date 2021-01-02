@@ -26,29 +26,46 @@ var sequelize = new Sequelize(
 
 exports.load = async function (req, res) {
     var contact_id = req.params.contact_id;
-    var contactTableDetails = '';
-    var adminTableDetails = await models.Admin.findOne({where:{status:'Yes'}});
-
-    if (contact_id && contact_id != undefined) {
-        contactTableDetails = await models.ContactUs.findOne({ where: { contact_id: contact_id } });
+    var contactTableDetails = await models.ContactUs.findOne();
+    if(contactTableDetails){
         return res.render('admin/contactus/addedit', {
-            adminTableDetails:adminTableDetails,
             title: 'Edit contact',
-            arrContactData: contactTableDetails,
+            arrContactData: contactTableDetails ? contactTableDetails : '',
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
         });
-    } else {
+    }else{
         return res.render('admin/contactus/addedit', {
-            adminTableDetails:adminTableDetails,
-            title: 'Add contact',
+            title: 'Edit contact',
             arrContactData: '',
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
         });
     }
+    // var adminTableDetails = await models.Admin.findOne({where:{status:'Yes'}});
+
+    // if (contact_id && contact_id != undefined) {
+    //     contactTableDetails = await models.ContactUs.findOne({ where: { contact_id: contact_id } });
+    //     return res.render('admin/contactus/addedit', {
+    //         adminTableDetails:adminTableDetails,
+    //         title: 'Edit contact',
+    //         arrContactData: contactTableDetails,
+    //         helper: helper,
+    //         messages: req.flash('info'),
+    //         errors: req.flash('errors')
+    //     });
+    // } else {
+    //     return res.render('admin/contactus/addedit', {
+    //         adminTableDetails:adminTableDetails,
+    //         title: 'Add contact',
+    //         arrContactData: '',
+    //         helper: helper,
+    //         messages: req.flash('info'),
+    //         errors: req.flash('errors')
+    //     });
+    // }
 }
 
 exports.saveOrUpdate = async function (req, res) {
@@ -73,13 +90,13 @@ exports.saveOrUpdate = async function (req, res) {
                     insta_id: fields.insta_id[0],
                     twitter_id: fields.twitter_id[0],
                     linkdin_id: fields.linkdin_id[0],
-                    image: userFinalImage,
+                    logo: userFinalImage,
                     status: fields.status[0],
                     mobile: fields.mobile[0]
                 }).then(function (contct_crt) {
                     if (contct_crt) {
                         if (files.image[0] != '' && files.image[0] != null) {
-                            helper.createDirectory('public/web-contents/ContactUs/' + contct_crt.contact_id + '/');
+                            helper.createDirectory('public/admin/web-contents/ContactUs/' + contct_crt.contact_id + '/');
                             var temp_path = files.image[0].path;
                             var target_path = 'ContactUs/' + contct_crt.contact_id + '/' + userFinalImage;
                             helper.uploadFiles(temp_path, target_path);
@@ -106,13 +123,13 @@ exports.saveOrUpdate = async function (req, res) {
                 insta_id: fields.insta_id[0],
                 twitter_id: fields.twitter_id[0],
                 linkdin_id: fields.linkdin_id[0],
-                image : userFinalImage ? userFinalImage : adminOldImage,
+                logo : userFinalImage ? userFinalImage : adminOldImage,
                 status: fields.status[0],
                 mobile: fields.mobile[0]
             }, { where: { contact_id: contact_id } }).then(function (contct_upd) {
                 if (contct_upd) {
                     if (files.image[0] != '' && files.image[0] != null) {
-                        helper.createDirectory('public/web-contents/ContactUs/' + contact_id + '/');
+                        helper.createDirectory('public/admin/web-contents/ContactUs/' + contact_id + '/');
                         var temp_path = files.image[0].path;
                         var target_path = 'ContactUs/' + contact_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);

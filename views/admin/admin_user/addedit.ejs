@@ -82,6 +82,8 @@
             </div>
           </div>
         </div>
+
+        <% if(arrAdminData == null && arrAdminData =='') {%>
         <div class="row">
           <div class="col-md-3 field-label-responsive">
             <label for="password">Confirm Password</label>
@@ -101,6 +103,7 @@
             </div>
           </div>
         </div>
+        <%}%>
         <div class="row">
           <div class="col-md-3 field-label-responsive">
             <label for="mobile">Mobile No</label>
@@ -149,7 +152,7 @@
                   value="<%= arrAdminData ? arrAdminData.image : '' %>">
                 <% if(arrAdminData.image !='' && arrAdminData.image != null){%>
                 <img id="preview"
-                  src="<%= baseurl + 'web-contents/Admin/'+arrAdminData.admin_id+'/' + arrAdminData.image %>"
+                  src="<%= baseurl + 'admin/web-contents/Admin/'+arrAdminData.admin_id+'/' + arrAdminData.image %>"
                   style="height:80px;width:80px;" class="img-thumbnail" />
                 <% }else{ %>
                 <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"

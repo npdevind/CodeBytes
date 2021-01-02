@@ -98,7 +98,7 @@
                     value="<%= arrServiceData ? arrServiceData.logo : '' %>">
                   <% if(arrServiceData.logo !='' && arrServiceData.logo != null){%>
                   <img id="preview"
-                    src="<%= baseurl + 'web-contents/Service/'+arrServiceData.service_id+'/' + arrServiceData.logo %>"
+                    src="<%= adminbaseurl + 'web-contents/Service/'+arrServiceData.service_id+'/' + arrServiceData.logo %>"
                     style="height:80px;width:80px;" class="img-thumbnail" />
                   <% }else{ %>
                   <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"

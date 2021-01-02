@@ -61,6 +61,7 @@ async function middleHandler(req, res, next) {
         if (user) {
             res.locals.sessionAdminFullName = user.name;
             res.locals.sessionAdminImage = user.image;
+            res.locals.sessionAdminPh = user.mobile;
             res.locals.sessionAdminId = user.admin_id;
         } else {
             //req.session.destroy();

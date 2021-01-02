@@ -168,10 +168,10 @@
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon" style="width: 2.6rem"></div>
                 <input type="file" class="form-group" id="image" name="image" accept="image/*" onchange="preView()"
-                  value="<%= arrContactData ? arrContactData.image : '' %>">
-                <% if(arrContactData.image !='' && arrContactData.image != null){%>
+                  value="<%= arrContactData ? arrContactData.logo : '' %>">
+                <% if(arrContactData.logo !='' && arrContactData.logo != null){%>
                 <img id="preview"
-                  src="<%= baseurl + 'web-contents/ContactUs/'+arrContactData.contact_id+'/' + arrContactData.image %>"
+                  src="<%= adminbaseurl + 'web-contents/ContactUs/'+arrContactData.contact_id+'/' + arrContactData.logo %>"
                   style="height:80px;width:80px;" class="img-thumbnail" />
                 <% }else{ %>
                 <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"

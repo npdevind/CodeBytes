@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         allowNull: true
       },
-      image:{
+      logo:{
         type: DataTypes.STRING(255),
         allowNull: true
       },

@@ -140,7 +140,7 @@
                     value="<%= arrTeamData ? arrTeamData.dp : '' %>">
                   <% if(arrTeamData.dp !='' && arrTeamData.dp != null){%>
                   <img id="preview"
-                    src="<%= baseurl + 'web-contents/Team/'+arrTeamData.team_id+'/' + arrTeamData.dp %>"
+                    src="<%= adminbaseurl + 'web-contents/Team/'+arrTeamData.team_id+'/' + arrTeamData.dp %>"
                     style="height:80px;width:80px;" class="img-thumbnail" />
                   <% }else{ %>
                   <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"

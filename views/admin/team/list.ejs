@@ -38,7 +38,7 @@
                         <td class="text-center"><%= i; %> <%! i++; %> </td>
                         <td class="text-center"> <%
                             var dp = 'Team/'+val.team_id+'/'+val.dp;
-                            if(helper.isFileExistsIn(dp)) dp = baseurl +'web-contents/'+  dp;
+                            if(helper.isFileExistsIn(dp)) dp = adminbaseurl +'web-contents/'+  dp;
                             else dp = baseurl + "web-contents/user.png";
                             %>
                             <img src="<%= dp %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>

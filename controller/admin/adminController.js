@@ -108,7 +108,7 @@ exports.saveOrUpdate = async function (req, res) {
                 }).then(function (admin_crt) {
                     if (admin_crt) {
                         if (files.image[0] != '' && files.image[0] != null) {
-                            helper.createDirectory('public/web-contents/Admin/' + admin_crt.admin_id + '/');
+                            helper.createDirectory('public/admin/web-contents/Admin/' + admin_crt.admin_id + '/');
                             var temp_path = files.image[0].path;
                             var target_path = 'Admin/' + admin_crt.admin_id + '/' + userFinalImage;
                             helper.uploadFiles(temp_path, target_path);
@@ -138,7 +138,7 @@ exports.saveOrUpdate = async function (req, res) {
             }, { where: { admin_id: admin_user_id } }).then(function (admin_upd) {
                 if (admin_upd) {
                     if (files.image[0] != '' && files.image[0] != null) {
-                        helper.createDirectory('public/web-contents/Admin/' + admin_user_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Admin/' + admin_user_id + '/');
                         var temp_path = files.image[0].path;
                         var target_path = 'Admin/' + admin_user_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);

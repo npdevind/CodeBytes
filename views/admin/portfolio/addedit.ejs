@@ -105,7 +105,7 @@
                     value="<%= arrPortfolioData ? arrPortfolioData.screen_shot : '' %>">
                   <% if(arrPortfolioData.screen_shot !='' && arrPortfolioData.screen_shot != null){%>
                   <img id="preview"
-                    src="<%= baseurl + 'web-contents/Portfolio/'+arrPortfolioData.portfolio_id+'/' + arrPortfolioData.screen_shot %>"
+                    src="<%= adminbaseurl + 'web-contents/Portfolio/'+arrPortfolioData.portfolio_id+'/' + arrPortfolioData.screen_shot %>"
                     style="height:80px;width:80px;" class="img-thumbnail" />
                   <% }else{ %>
                   <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"

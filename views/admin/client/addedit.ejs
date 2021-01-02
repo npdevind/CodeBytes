@@ -76,7 +76,7 @@
                   value="<%= arrClientData ? arrClientData.image : '' %>">
                 <% if(arrClientData.image !='' && arrClientData.image != null){%>
                 <img id="preview"
-                  src="<%= baseurl + 'web-contents/Client/'+arrClientData.client_id+'/' + arrClientData.image %>"
+                  src="<%= baseurl + 'admin/web-contents/Client/'+arrClientData.client_id+'/' + arrClientData.image %>"
                   style="height:80px;width:80px;" class="img-thumbnail" />
                 <% }else{ %>
                 <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"

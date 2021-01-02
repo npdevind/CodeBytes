@@ -40,7 +40,7 @@ module.exports = {
     var str = __dirname;
     var n = str.lastIndexOf("\\");
     var path = str.substring(0, n + 1);
-    var new_location = path + "public" + ds + "web-contents" +ds+ target_path;
+    var new_location = path + "public" + ds + "admin" +ds+ "web-contents" +ds+ target_path;
     var result = await new Promise((resolve, reject) => {
       fs.copy(temp_path, new_location, function (err, res) {
         if (!err) {
@@ -54,7 +54,7 @@ module.exports = {
   },
 
   isFileExistsIn: function(filename) {
-    const directoryPath = this.getBasePath() + "public" + ds + "web-contents" + ds + filename;
+    const directoryPath = this.getBasePath() + "public" + ds + "admin" +ds+ "web-contents" + ds + filename;
     if(fs.existsSync(directoryPath)) return true;
     else return false;
   },

@@ -1,8 +1,4 @@
-/**
-* PHP Email Form Validation - v2.3
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
+
 !(function($) {
   "use strict";
 
@@ -123,43 +119,60 @@
     return true;
   });
 
-  function php_email_form_submit(this_form, action, data) {
+  function php_email_form_submit(this_form, action) {
+    var sender_name = $('#sender_name').val();
+    var sender_to = $('#sender_to').val();
+    var sender_subject = $('#sender_subject').val();
+    var sender_message = $('#sender_message').val();
     $.ajax({
       type: "POST",
       url: action,
-      data: data,
-      timeout: 40000
-    }).done( function(msg){
-      if (msg.trim() == 'OK') {
-        this_form.find('.loading').slideUp();
-        this_form.find('.sent-message').slideDown();
-        this_form.find("input:not(input[type=submit]), textarea").val('');
-      } else {
-        this_form.find('.loading').slideUp();
-        if(!msg) {
-          msg = 'Form submission failed and no error message returned from: ' + action + '<br>';
+      data: {
+        "sender_name":sender_name,"sender_to":sender_to,"sender_subject":sender_subject,"sender_message":sender_message
+      },
+      timeout: 40000,
+      success: function (data) {
+        if(data.success == true){
+          this_form.find('.loading').slideUp();
+          this_form.find('.sent-message').slideDown();
+          this_form.trigger("reset");
+          this_form.find('.sent-message').slideUp();
+        }else{
+          this_form.find('.error-message').slideDown().html(data.msg);
         }
-        this_form.find('.error-message').slideDown().html(msg);
       }
-    }).fail( function(data){
-      console.log(data);
-      var error_msg = "Form submission failed!<br>";
-      if(data.statusText || data.status) {
-        error_msg += 'Status:';
-        if(data.statusText) {
-          error_msg += ' ' + data.statusText;
-        }
-        if(data.status) {
-          error_msg += ' ' + data.status;
-        }
-        error_msg += '<br>';
-      }
-      if(data.responseText) {
-        error_msg += data.responseText;
-      }
-      this_form.find('.loading').slideUp();
-      this_form.find('.error-message').slideDown().html(error_msg);
-    });
+    })
+    // .done( function(msg){
+    //   if (msg.trim() == 'OK') {
+    //     this_form.find('.loading').slideUp();
+    //     this_form.find('.sent-message').slideDown();
+    //     this_form.find("input:not(input[type=submit]), textarea").val('');
+    //   } else {
+    //     this_form.find('.loading').slideUp();
+    //     if(!msg) {
+    //       msg = 'Form submission failed and no error message returned from: ' + action + '<br>';
+    //     }
+    //     this_form.find('.error-message').slideDown().html(msg);
+    //   }
+    // }).fail( function(data){
+    //   console.log(data);
+    //   var error_msg = "Form submission failed!<br>";
+    //   if(data.statusText || data.status) {
+    //     error_msg += 'Status:';
+    //     if(data.statusText) {
+    //       error_msg += ' ' + data.statusText;
+    //     }
+    //     if(data.status) {
+    //       error_msg += ' ' + data.status;
+    //     }
+    //     error_msg += '<br>';
+    //   }
+    //   if(data.responseText) {
+    //     error_msg += data.responseText;
+    //   }
+    //   this_form.find('.loading').slideUp();
+    //   this_form.find('.error-message').slideDown().html(error_msg);
+    // });
   }
 
 })(jQuery);

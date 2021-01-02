@@ -99,7 +99,7 @@ exports.saveOrUpdate = async function (req, res) {
             }).then(function (service_crt) {
                 if (service_crt) {
                     if (files.logo[0] != '' && files.logo[0] != null) {
-                        helper.createDirectory('public/web-contents/Service/' + service_crt.service_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Service/' + service_crt.service_id + '/');
                         var temp_path = files.logo[0].path;
                         var target_path = 'Service/' + service_crt.service_id+ '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);
@@ -124,7 +124,7 @@ exports.saveOrUpdate = async function (req, res) {
             }, { where: { service_id: service_id } }).then(function (service_upd) {
                 if (service_upd) {
                     if (files.logo[0] != '' && files.logo[0] != null) {
-                        helper.createDirectory('public/web-contents/Service/' + service_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Service/' + service_id + '/');
                         var temp_path = files.logo[0].path;
                         var target_path = 'Service/' + service_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);

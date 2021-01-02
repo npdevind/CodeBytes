@@ -93,13 +93,13 @@ exports.saveOrUpdate = async function (req, res) {
             models.Feature.create({
                 name: fields.name[0],
                 status: fields.status[0],
-                image: userFinalImage,
+                logo: userFinalImage,
                 feature_title: fields.feature_title[0]
 
             }).then(function (ftr_crt) {
                 if (ftr_crt) {
                     if (files.image[0] != '' && files.image[0] != null) {
-                        helper.createDirectory('public/web-contents/Feature/' + ftr_crt.feature_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Feature/' + ftr_crt.feature_id + '/');
                         var temp_path = files.image[0].path;
                         var target_path = 'Feature/' + ftr_crt.feature_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);
@@ -119,11 +119,11 @@ exports.saveOrUpdate = async function (req, res) {
                 name: fields.name[0],
                 status: fields.status[0],
                 feature_title: fields.feature_title[0],
-                image: userFinalImage ? userFinalImage : adminOldImage
+                logo: userFinalImage ? userFinalImage : adminOldImage
             }, { where: { feature_id: feature_id } }).then(function (ftr_upd) {
                 if (ftr_upd) {
                     if (files.image[0] != '' && files.image[0] != null) {
-                        helper.createDirectory('public/web-contents/Feature/' + feature_id + '/');
+                        helper.createDirectory('public/admin/web-contents/Feature/' + feature_id + '/');
                         var temp_path = files.image[0].path;
                         var target_path = 'Feature/' + feature_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);

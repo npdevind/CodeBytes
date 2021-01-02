@@ -35,7 +35,7 @@
                         <td class="text-center"><%= i; %> <%! i++; %> </td>
                         <td class="text-center"> <%
                             var logo = 'Service/'+val.service_id+'/'+val.logo;
-                            if(helper.isFileExistsIn(logo)) logo = baseurl +'web-contents/'+  logo;
+                            if(helper.isFileExistsIn(logo)) logo = adminbaseurl +'web-contents/'+  logo;
                             else logo = baseurl + "web-contents/user.png";
                             %>
                             <img src="<%= logo %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
