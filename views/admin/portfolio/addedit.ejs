@@ -1,0 +1,154 @@
+<%- include ('../layouts/header') %>
+<%- include ('../layouts/sidebar') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+  href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+  integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+
+
+<main class="page-content">
+  <div class="container-fluid">
+    <h2>
+      <%=title%>
+    </h2>
+    <div>
+      <a href="<%=adminbaseurl%>portfolio/list"> Portfolio List </a>
+      <%- include ('../flashMessage') %>
+      <hr>
+      
+      
+      <div class="container">
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
+          action="<%= adminbaseurl %>portfolio">
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="name">Name</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name"
+                    value="<%=arrPortfolioData ? arrPortfolioData.name : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="url">URL</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="url" class="form-control" id="url" placeholder="Enter URL"
+                    value="<%=arrPortfolioData ? arrPortfolioData.url : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label>Type</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
+                  <select class="form-control" name="type">
+                    <option value=''>choose....</option>
+                    <option <% if(arrPortfolioData.type=='APP'){ %>selected="selected" <% }%> value="APP">APP
+                    </option>
+                    <option <% if(arrPortfolioData.type=='CARD'){ %>selected="selected" <% }%> value="CARD">
+                    CARD</option>
+                    <option <% if(arrPortfolioData.type=='WEB'){ %>selected="selected" <% }%> value="WEB">WEB
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label>Active</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
+                  <select class="form-control" name="status">
+                    <option value=''>choose....</option>
+                    <option <% if(arrPortfolioData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
+                    </option>
+                    <option <% if(arrPortfolioData.status=='No'){ %>selected="selected" <% }%> value="No">
+                        No</option>
+                    <option <% if(arrPortfolioData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="screen_shot">Screen Shot</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"></div>
+                  <input type="file" class="form-group" id="screen_shot" name="screen_shot" accept="screen_shot/*" onchange="preView()"
+                    value="<%= arrPortfolioData ? arrPortfolioData.screen_shot : '' %>">
+                  <% if(arrPortfolioData.screen_shot !='' && arrPortfolioData.screen_shot != null){%>
+                  <img id="preview"
+                    src="<%= baseurl + 'web-contents/Portfolio/'+arrPortfolioData.portfolio_id+'/' + arrPortfolioData.screen_shot %>"
+                    style="height:80px;width:80px;" class="img-thumbnail" />
+                  <% }else{ %>
+                  <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"
+                    class="img-thumbnail" />
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-12">
+              <input type="hidden" name="form_portfolio_id" value="<%= arrPortfolioData ? arrPortfolioData.portfolio_id : '' %>">
+              <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
+                <%= arrPortfolioData ? 'Update' : 'Submit' %></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <%- include ('../layouts/footer') %>
+
+      <script>
+        function preView() {
+          var fileInput = document.getElementById('screen_shot');
+          var filePath = fileInput.value;
+          var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+          if (!allowedExtensions.exec(filePath)) {
+            fileInput.value = '';
+            return false;
+          } else {
+            //screen_shot preview
+            if (fileInput.files && fileInput.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function () {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+              };
+              reader.readAsDataURL(event.target.files[0]);
+              $("#screen_shot-error").remove();
+            };
+          }
+          // $("#x_content").click(); 
+        }
+      </script>
+     

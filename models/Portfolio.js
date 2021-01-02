@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       },
       screen_shot:{
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(255),
         allowNull: true
       },
       url:{

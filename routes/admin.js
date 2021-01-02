@@ -119,5 +119,28 @@ router.get('/feature/delete/:feature_id?', checkAdminLogin, middleHandler, featu
 //////////////////////////////////// Feature ends ////////////////////////////////////////////////////////
 
 
+//////////////////////////////////// Portfolio Start ////////////////////////////////////////////////////////
+const portfolioController = require('../controller/admin/portfolioController');
+router.get('/portfolio/list', checkAdminLogin, middleHandler, portfolioController.list);
+router.get('/portfolio/:portfolio_id?', checkAdminLogin, middleHandler, portfolioController.load);
+router.post('/portfolio', checkAdminLogin, middleHandler, portfolioController.saveOrUpdate);
+router.get('/portfolio/delete/:portfolio_id?', checkAdminLogin, middleHandler, portfolioController.delete);
+//////////////////////////////////// Portfolio ends ////////////////////////////////////////////////////////
+
+//////////////////////////////////// Team Start ////////////////////////////////////////////////////////
+const teamController = require('../controller/admin/teamController');
+router.get('/team/list', checkAdminLogin, middleHandler, teamController.list);
+router.get('/team/:team_id?', checkAdminLogin, middleHandler, teamController.load);
+router.post('/team', checkAdminLogin, middleHandler, teamController.saveOrUpdate);
+router.get('/team/delete/:team_id?', checkAdminLogin, middleHandler, teamController.delete);
+//////////////////////////////////// Team ends ////////////////////////////////////////////////////////
+
+//////////////////////////////////// Service Start ////////////////////////////////////////////////////////
+const serviceController = require('../controller/admin/serviceController');
+router.get('/service/list', checkAdminLogin, middleHandler, serviceController.list);
+router.get('/service/:service_id?', checkAdminLogin, middleHandler, serviceController.load);
+router.post('/service', checkAdminLogin, middleHandler, serviceController.saveOrUpdate);
+router.get('/service/delete/:service_id?', checkAdminLogin, middleHandler, serviceController.delete);
+//////////////////////////////////// Service ends ////////////////////////////////////////////////////////
 
 module.exports = router;

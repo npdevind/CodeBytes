@@ -1,0 +1,189 @@
+<%- include ('../layouts/header') %>
+<%- include ('../layouts/sidebar') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+  href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+  integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+
+
+<main class="page-content">
+  <div class="container-fluid">
+    <h2>
+      <%=title%>
+    </h2>
+    <div>
+      <a href="<%=adminbaseurl%>team/list"> Team List </a>
+      <%- include ('../flashMessage') %>
+      <hr>
+      
+      
+      <div class="container">
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
+          action="<%= adminbaseurl %>team">
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="team_title">Team Title</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="team_title" class="form-control" id="team_title" placeholder="Enter title"
+                    value="<%=arrTeamData ? arrTeamData.team_title : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="position">Position</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="position" class="form-control" id="position" placeholder="Enter Position"
+                    value="<%=arrTeamData ? arrTeamData.position : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="fb_id">Facebook</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-facebook"></i></div>
+                  <input type="text" name="fb_id" class="form-control" id="fb_id" placeholder="facebook id"
+                    value="<%=arrTeamData ? arrTeamData.fb_id : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                <label for="twitter_id">Twitter</label>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-twitter"></i></div>
+                    <input type="text" name="twitter_id" class="form-control" id="twitter_id" placeholder="twitter id"
+                      value="<%=arrTeamData ? arrTeamData.twitter_id : '' %>" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                <label for="insta_id">Instagram</label>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-instagram"></i></div>
+                    <input type="text" name="insta_id" class="form-control" id="insta_id" placeholder="instagram id"
+                      value="<%=arrTeamData ? arrTeamData.insta_id : '' %>" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                <label for="linkdin_id">LinkedIn</label>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-linkedin"></i></div>
+                    <input type="text" name="linkdin_id" class="form-control" id="linkdin_id" placeholder="linkedin id"
+                      value="<%=arrTeamData ? arrTeamData.linkdin_id : '' %>" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label>Active</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
+                  <select class="form-control" name="status">
+                    <option value=''>choose....</option>
+                    <option <% if(arrTeamData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
+                    </option>
+                    <option <% if(arrTeamData.status=='No'){ %>selected="selected" <% }%> value="No">
+                        No</option>
+                    <option <% if(arrTeamData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="dp">DP</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"></div>
+                  <input type="file" class="form-group" id="dp" name="dp" accept="dp/*" onchange="preView()"
+                    value="<%= arrTeamData ? arrTeamData.dp : '' %>">
+                  <% if(arrTeamData.dp !='' && arrTeamData.dp != null){%>
+                  <img id="preview"
+                    src="<%= baseurl + 'web-contents/Team/'+arrTeamData.team_id+'/' + arrTeamData.dp %>"
+                    style="height:80px;width:80px;" class="img-thumbnail" />
+                  <% }else{ %>
+                  <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"
+                    class="img-thumbnail" />
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-12">
+              <input type="hidden" name="form_team_id" value="<%= arrTeamData ? arrTeamData.team_id : '' %>">
+              <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
+                <%= arrTeamData ? 'Update' : 'Submit' %></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <%- include ('../layouts/footer') %>
+
+      <script>
+        function preView() {
+          var fileInput = document.getElementById('dp');
+          var filePath = fileInput.value;
+          var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+          if (!allowedExtensions.exec(filePath)) {
+            fileInput.value = '';
+            return false;
+          } else {
+            //dp preview
+            if (fileInput.files && fileInput.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function () {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+              };
+              reader.readAsDataURL(event.target.files[0]);
+              $("#dp-error").remove();
+            };
+          }
+          // $("#x_content").click(); 
+        }
+      </script>
+     

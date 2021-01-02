@@ -1,0 +1,70 @@
+<%- include ('../layouts/header') %>
+<%- include ('../layouts/sidebar') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+    href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+
+<main class="page-content">
+    <div class="container-fluid">
+        <h2><%=title%></h2>
+        <div>
+            <a href="<%=adminbaseurl%>team"> Add Team </a>
+            <%- include ('../flashMessage') %>
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">SL</th>
+                        <th class="text-center">DP</th>
+                        <th class="text-center">Team Title</th>
+                        <th class="text-center">Position</th>
+                        <th class="text-center">Active</th>
+                        <th class="text-center">Facebook</th>
+                        <th class="text-center">Instagram</th>
+                        <th class="text-center">Twitter</th>
+                        <th class="text-center">LinkedIn</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var i=1; arrTeamData.forEach(function(val){ %>
+                    <tr>
+                        <td class="text-center"><%= i; %> <%! i++; %> </td>
+                        <td class="text-center"> <%
+                            var dp = 'Team/'+val.team_id+'/'+val.dp;
+                            if(helper.isFileExistsIn(dp)) dp = baseurl +'web-contents/'+  dp;
+                            else dp = baseurl + "web-contents/user.png";
+                            %>
+                            <img src="<%= dp %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
+                            <td class="text-center"><%= val.team_title %></td>
+                            <td class="text-center"><%= val.position %></td>
+                            <td class="text-center"><%= val.status %></td>
+                            <td class="text-center"><%= val.fb_id %></td>
+                            <td class="text-center"><%= val.insta_id %></td>
+                            <td class="text-center"><%= val.twitter_id %></td>
+                            <td class="text-center"><%= val.linkdin_id %></td>
+                            <td class="text-center">
+                            <a rel="tooltip" class="btn btn-success btn-just-icon btn-sm"
+                                href="<%= adminbaseurl%>team/<%= val.team_id %>" data-original-title="" title="">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a rel="tooltip" class="btn btn-danger btn-just-icon btn-sm"
+                                onclick="return confirm('Are you sure to delete?')"
+                                href="<%= adminbaseurl%>team/delete/<%= val.team_id %>" data-original-title=""
+                                title="">
+                                <i class="material-icons">close</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <%- include ('../layouts/footer') %>
