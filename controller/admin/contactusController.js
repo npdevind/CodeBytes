@@ -37,7 +37,7 @@ exports.load = async function (req, res) {
         });
     }else{
         return res.render('admin/contactus/addedit', {
-            title: 'Edit contact',
+            title: 'Add contact',
             arrContactData: '',
             helper: helper,
             messages: req.flash('info'),
