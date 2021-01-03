@@ -53,13 +53,12 @@ exports.load = async function (req, res) {
     var team_id = req.params.team_id;
     var teamTableDetails = '';
     var adminTableDetails = await models.Admin.findOne({where:{status:'Yes'}});
-
     if (team_id && team_id != undefined) {
         teamTableDetails = await models.Team.findOne({ where: { team_id: team_id } });
         return res.render('admin/team/addedit', {
             adminTableDetails:adminTableDetails,
             title: 'Edit Team',
-            arrTeamData: teamTableDetails,
+            arrTeamData: teamTableDetails ? teamTableDetails : '',
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
@@ -91,6 +90,7 @@ exports.saveOrUpdate = async function (req, res) {
           
                 models.Team.create({
                     team_title: fields.team_title[0],
+                    name: fields.name[0],
                     position: fields.position[0],
                     status: fields.status[0],
                     fb_id: fields.fb_id[0],
@@ -119,6 +119,7 @@ exports.saveOrUpdate = async function (req, res) {
             var adminOldImage = teamTableDetails.dp;
             models.Team.update({
                     team_title: fields.team_title[0],
+                    name: fields.name[0],
                     position: fields.position[0],
                     status: fields.status[0],
                     fb_id: fields.fb_id[0],

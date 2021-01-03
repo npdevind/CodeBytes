@@ -81,10 +81,10 @@ exports.saveOrUpdate = async function (req, res) {
     var form = new multiparty.Form();
     form.parse(req, async function (err, fields, files) {
         var client_id = fields.form_client_id[0];
-        var formImage = files.image[0].originalFilename;
+        var formImage = files.logo[0].originalFilename;
         if (formImage != '') {
             var ImageExt = formImage.split('.').pop();
-            var adminImagewithEXT = Date.now() + files.image[0] + "." + ImageExt;
+            var adminImagewithEXT = Date.now() + files.logo[0] + "." + ImageExt;
             var userFinalImage = adminImagewithEXT.replace("[object Object]", "");
         }
 
@@ -93,13 +93,13 @@ exports.saveOrUpdate = async function (req, res) {
                 models.Client.create({
                     name: fields.name[0],
                     status: fields.status[0],
-                    image: userFinalImage
+                    logo: userFinalImage
 
                 }).then(function (clnt_crt) {
                     if (clnt_crt) {
-                        if (files.image[0] != '' && files.image[0] != null) {
+                        if (files.logo[0] != '' && files.logo[0] != null) {
                             helper.createDirectory('public/admin/web-contents/Client/' + clnt_crt.client_id + '/');
-                            var temp_path = files.image[0].path;
+                            var temp_path = files.logo[0].path;
                             var target_path = 'Client/' + clnt_crt.client_id + '/' + userFinalImage;
                             helper.uploadFiles(temp_path, target_path);
                         }
@@ -117,12 +117,12 @@ exports.saveOrUpdate = async function (req, res) {
             models.Client.update({
                 name: fields.name[0],
                 status: fields.status[0],
-                image: userFinalImage ? userFinalImage : adminOldImage
+                logo: userFinalImage ? userFinalImage : adminOldImage
             }, { where: { client_id: client_id } }).then(function (clnt_upd) {
                 if (clnt_upd) {
-                    if (files.image[0] != '' && files.image[0] != null) {
+                    if (files.logo[0] != '' && files.logo[0] != null) {
                         helper.createDirectory('public/admin/web-contents/Client/' + client_id + '/');
-                        var temp_path = files.image[0].path;
+                        var temp_path = files.logo[0].path;
                         var target_path = 'Client/' + client_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);
                     }
