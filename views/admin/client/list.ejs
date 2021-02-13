@@ -29,11 +29,11 @@
             <tr>
               <td class="text-center"><%= i; %> <%! i++; %> </td>
               <td class="text-center"> <%
-                var image = 'Client/'+val.client_id+'/'+val.image;
-                if(helper.isFileExistsIn(image)) image = adminbaseurl +'web-contents/'+  image;
+                var logo = 'Client/'+val.client_id+'/'+val.logo;
+                if(helper.isFileExistsIn(logo)) logo = adminbaseurl +'web-contents/'+  logo;
                 else image = baseurl + "web-contents/user.png";
                 %>
-                <img src="<%= image %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
+                <img src="<%= logo %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
               <td class="text-center"><%= val.name %></td>
               <td class="text-center"><%= val.status %></td>
               <td class="text-center">

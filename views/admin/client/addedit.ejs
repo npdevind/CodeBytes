@@ -66,17 +66,17 @@
 
         <div class="row">
           <div class="col-md-3 field-label-responsive">
-            <label for="image">Image</label>
+            <label for="logo">logo</label>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon" style="width: 2.6rem"></div>
-                <input type="file" class="form-group" id="image" name="image" accept="image/*" onchange="preView()"
-                  value="<%= arrClientData ? arrClientData.image : '' %>">
-                <% if(arrClientData.image !='' && arrClientData.image != null){%>
+                <input type="file" class="form-group" id="logo" name="logo" accept="logo/*" onchange="preView()"
+                  value="<%= arrClientData ? arrClientData.logo : '' %>">
+                <% if(arrClientData.logo !='' && arrClientData.logo != null){%>
                 <img id="preview"
-                  src="<%= baseurl + 'admin/web-contents/Client/'+arrClientData.client_id+'/' + arrClientData.image %>"
+                  src="<%= baseurl + 'admin/web-contents/Client/'+arrClientData.client_id+'/' + arrClientData.logo %>"
                   style="height:80px;width:80px;" class="img-thumbnail" />
                 <% }else{ %>
                 <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"
@@ -103,14 +103,14 @@
 
     <script>
       function preView() {
-        var fileInput = document.getElementById('image');
+        var fileInput = document.getElementById('logo');
         var filePath = fileInput.value;
         var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
         if (!allowedExtensions.exec(filePath)) {
           fileInput.value = '';
           return false;
         } else {
-          //Image preview
+          //logo preview
           if (fileInput.files && fileInput.files[0]) {
             var reader = new FileReader();
             reader.onload = function () {
@@ -118,7 +118,7 @@
               output.src = reader.result;
             };
             reader.readAsDataURL(event.target.files[0]);
-            $("#image-error").remove();
+            $("#logo-error").remove();
           };
         }
         // $("#x_content").click(); 

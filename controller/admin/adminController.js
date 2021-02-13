@@ -83,9 +83,9 @@ exports.saveOrUpdate = async function (req, res) {
     form.parse(req, async function (err, fields, files) {
         var admin_user_id = fields.form_admin_id[0];
         var password = fields.password;
-        var confirm_password = fields.confirm_password;
+        //var confirm_password = fields.confirm_password;
         var hash = bcrypt.hashSync(password);
-        var hash = bcrypt.hashSync(confirm_password);
+        //var hash = bcrypt.hashSync(confirm_password);
         var formImage = files.image[0].originalFilename;
         if (formImage != '') {
             var ImageExt = formImage.split('.').pop();
@@ -101,7 +101,7 @@ exports.saveOrUpdate = async function (req, res) {
                     username: fields.username[0],
                     email: fields.email[0],
                     password: hash,
-                    confirm_password: hash,
+                    //confirm_password: hash,
                     image: userFinalImage,
                     status: fields.status[0],
                     mobile: fields.mobile[0]
