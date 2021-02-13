@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <h2><%=title%></h2>
         <div>
-            <a href="<%=adminbaseurl%>service"> Add Service </a>
+            <a href="<%=adminbaseurl%>testimonial"> Add Testimonial </a>
             <%- include ('../flashMessage') %>
         </div>
         <hr>
@@ -21,38 +21,34 @@
                 <thead>
                     <tr>
                         <th class="text-center">SL</th>
-                        <th class="text-center">Logo</th>
-                        <th class="text-center">Service Title</th>
-                        <!-- <th class="text-center">Name</th> -->
-                        <th class="text-center">Description</th>
-                        <th class="text-center">URL</th>
-                        <th class="text-center">Active</th>
+                        <th class="text-center">DP</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Profession</th>
+                        <th class="text-center">Introduction</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% var i=1; arrServiceData.forEach(function(val){ %>
+                    <% var i=1; arrTestimonialData.forEach(function(val){ %>
                     <tr>
                         <td class="text-center"><%= i; %> <%! i++; %> </td>
                         <td class="text-center"> <%
-                            var logo = 'Service/'+val.service_id+'/'+val.logo;
-                            if(helper.isFileExistsIn(logo)) logo = adminbaseurl +'web-contents/'+  logo;
-                            else logo = baseurl + "web-contents/user.png";
+                            var dp = 'Testimonial/'+val.testimonial_id+'/'+val.dp;
+                            if(helper.isFileExistsIn(dp)) dp = adminbaseurl +'web-contents/'+  dp;
+                            else dp = baseurl + "web-contents/user.png";
                             %>
-                            <img src="<%= logo %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
-                            <td class="text-center"><%= val.service_title %></td>
-                            <!-- <td class="text-center"><%= val.name %></td> -->
-                            <td class="text-center"><%= val.description %></td>
-                            <td class="text-center"><%= val.url %></td>
-                            <td class="text-center"><%= val.status %></td>
+                            <img src="<%= dp %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
+                            <td class="text-center"><%= val.name %></td>
+                            <td class="text-center"><%= val.profession %></td>
+                            <td class="text-center"><%= val.intro %></td>
                             <td class="text-center">
                             <a rel="tooltip" class="btn btn-success btn-just-icon btn-sm"
-                                href="<%= adminbaseurl%>service/<%= val.service_id %>" data-original-title="" title="">
+                                href="<%= adminbaseurl%>testimonial/<%= val.testimonial_id %>" data-original-title="" title="">
                                 <i class="material-icons">edit</i>
                             </a>
                             <a rel="tooltip" class="btn btn-danger btn-just-icon btn-sm"
                                 onclick="return confirm('Are you sure to delete?')"
-                                href="<%= adminbaseurl%>service/delete/<%= val.service_id %>" data-original-title=""
+                                href="<%= adminbaseurl%>testimonial/delete/<%= val.testimonial_id %>" data-original-title=""
                                 title="">
                                 <i class="material-icons">close</i>
                             </a>

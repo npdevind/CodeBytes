@@ -14,8 +14,12 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         allowNull: true
       },   
-      name:{
-        type: DataTypes.STRING(255),
+      // name:{
+      //   type: DataTypes.STRING(255),
+      //   allowNull: true
+      // },
+      url:{
+        type: DataTypes.STRING(100),
         allowNull: true
       },    
       description:{

@@ -1,21 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Feature', {
-      feature_id: {
+    return sequelize.define('Faq', {
+      faq_id: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
       },
-      feature_title:{
-        type: DataTypes.STRING(255),
+      question:{
+        type: DataTypes.STRING(100),
         allowNull: true
       },
-      logo:{
-        type: DataTypes.STRING(255),
-        allowNull: true
-      },
-      url:{
-        type: DataTypes.STRING(255),
+      answer:{
+        type: DataTypes.TEXT,
         allowNull: true
       },
       status:{
@@ -32,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull:true
       } 
     },{
-      tableName: 'feature' // THIS LINE HERE
+      tableName: 'faq' // THIS LINE HERE
     });
   };
     

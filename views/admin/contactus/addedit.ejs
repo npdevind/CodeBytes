@@ -34,7 +34,8 @@
             <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-file-alt"></i></div>
-                <textarea type="text" name="description" class="form-control" id="description" rows="5" placeholder = "enter description" required>
+                <textarea type="text" name="description" class="form-control" id="description" rows="5"
+                  placeholder="enter description" required>
                   <%=arrContactData ? arrContactData.description : '' %></textarea>
               </div>
             </div>
@@ -55,61 +56,61 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="twitter_id">Twitter</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-twitter"></i></div>
-                  <input type="text" name="twitter_id" class="form-control" id="twitter_id" placeholder="twitter id"
-                    value="<%=arrContactData ? arrContactData.twitter_id : '' %>" required>
-                </div>
+          <div class="col-md-3 field-label-responsive">
+            <label for="twitter_id">Twitter</label>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-twitter"></i></div>
+                <input type="text" name="twitter_id" class="form-control" id="twitter_id" placeholder="twitter id"
+                  value="<%=arrContactData ? arrContactData.twitter_id : '' %>" required>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="insta_id">Instagram</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-instagram"></i></div>
-                  <input type="text" name="insta_id" class="form-control" id="insta_id" placeholder="instagram id"
-                    value="<%=arrContactData ? arrContactData.insta_id : '' %>" required>
-                </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 field-label-responsive">
+            <label for="insta_id">Instagram</label>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-instagram"></i></div>
+                <input type="text" name="insta_id" class="form-control" id="insta_id" placeholder="instagram id"
+                  value="<%=arrContactData ? arrContactData.insta_id : '' %>" required>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="linkdin_id">LinkedIn</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-linkedin"></i></div>
-                  <input type="text" name="linkdin_id" class="form-control" id="linkdin_id" placeholder="linkedin id"
-                    value="<%=arrContactData ? arrContactData.linkdin_id : '' %>" required>
-                </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 field-label-responsive">
+            <label for="linkdin_id">LinkedIn</label>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-linkedin"></i></div>
+                <input type="text" name="linkdin_id" class="form-control" id="linkdin_id" placeholder="linkedin id"
+                  value="<%=arrContactData ? arrContactData.linkdin_id : '' %>" required>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="location">Location</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map-marker"></i></div>
-                  <input type="text" name="location" class="form-control" id="location" placeholder="your location"
-                    value="<%=arrContactData ? arrContactData.location : '' %>" required>
-                </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 field-label-responsive">
+            <label for="location">Location</label>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map-marker"></i></div>
+                <input type="text" name="location" class="form-control" id="location" placeholder="your location"
+                  value="<%=arrContactData ? arrContactData.location : '' %>" required>
               </div>
             </div>
           </div>
+        </div>
         <div class="row">
           <div class="col-md-3 field-label-responsive">
             <label for="mobile">Mobile</label>
@@ -125,19 +126,19 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="email">E-Mail Address</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                  <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com"
-                    value="<%=arrContactData ? arrContactData.email : '' %>" required>
-                </div>
+          <div class="col-md-3 field-label-responsive">
+            <label for="email">E-Mail Address</label>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com"
+                  value="<%=arrContactData ? arrContactData.email : '' %>" required>
               </div>
             </div>
           </div>
+        </div>
         <div class="row">
           <div class="col-md-3 field-label-responsive">
             <label>Active</label>

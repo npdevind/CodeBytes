@@ -1,27 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Feature', {
-      feature_id: {
+    return sequelize.define('Testimonial', {
+      testimonial_id: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
       },
-      feature_title:{
+      name:{
         type: DataTypes.STRING(255),
         allowNull: true
-      },
-      logo:{
+      },   
+      dp:{
         type: DataTypes.STRING(255),
         allowNull: true
-      },
-      url:{
-        type: DataTypes.STRING(255),
+      },      
+      profession :{
+        type: DataTypes.STRING(50),
         allowNull: true
       },
-      status:{
-        type: DataTypes.ENUM('Yes','No','Blocked'),
-        defaultValue: 'No',
-        allowNull: false
+      intro :{
+        type: DataTypes.TEXT,
+        allowNull: true
       },
       createdBy: {
         type: DataTypes.STRING(255),
@@ -32,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull:true
       } 
     },{
-      tableName: 'feature' // THIS LINE HERE
+      tableName: 'testimonial' 
     });
   };
     

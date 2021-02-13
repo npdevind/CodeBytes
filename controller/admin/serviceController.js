@@ -91,7 +91,8 @@ exports.saveOrUpdate = async function (req, res) {
         if (!service_id) {
 
             models.Service.create({
-                name: fields.name[0],
+                // name: fields.name[0],
+                url: fields.url[0],
                 status: fields.status[0],
                 logo: userFinalImage,
                 service_title: fields.service_title[0],
@@ -116,7 +117,8 @@ exports.saveOrUpdate = async function (req, res) {
             var serviceTableDetails = await models.Service.findOne({ where: { service_id: service_id } });
             var adminOldImage = serviceTableDetails.logo;
             models.Service.update({
-                name: fields.name[0],
+                // name: fields.name[0],
+                url: fields.url[0],
                 status: fields.status[0],
                 service_title: fields.service_title[0],
                 description: fields.description[0],

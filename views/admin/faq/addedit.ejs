@@ -1,0 +1,87 @@
+<%- include ('../layouts/header') %>
+<%- include ('../layouts/sidebar') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+  href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+  integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+
+
+<main class="page-content">
+  <div class="container-fluid">
+    <h2>
+      <%=title%>
+    </h2>
+    <div>
+      <a href="<%=adminbaseurl%>faq/list"> FAQ List </a>
+      <%- include ('../flashMessage') %>
+      <hr>
+      
+      
+      <div class="container">
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
+          action="<%= adminbaseurl %>faq">
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="question">Question</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="question" class="form-control" id="question" placeholder="Enter Question"
+                    value="<%=arrFaqData ? arrFaqData.question : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="answer">Answer</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <textarea type="text" name="answer" class="form-control" id="answer" placeholder = "enter answer" required>
+                    <%=arrFaqData ? arrFaqData.answer : '' %></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label>Active</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
+                  <select class="form-control" name="status">
+                    <option value=''>choose....</option>
+                    <option <% if(arrFaqData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
+                    </option>
+                    <option <% if(arrFaqData.status=='No'){ %>selected="selected" <% }%> value="No">
+                        No</option>
+                    <option <% if(arrFaqData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-12">
+              <input type="hidden" name="form_faq_id" value="<%= arrFaqData ? arrFaqData.faq_id : '' %>">
+              <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
+                <%= arrFaqData ? 'Update' : 'Submit' %></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <%- include ('../layouts/footer') %>
+

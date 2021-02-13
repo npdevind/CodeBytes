@@ -15,29 +15,13 @@
       <%=title%>
     </h2>
     <div>
-      <a href="<%=adminbaseurl%>service/list"> Service List </a>
+      <a href="<%=adminbaseurl%>testimonial/list"> Testimonial List </a>
       <%- include ('../flashMessage') %>
       <hr>
-      
-      
       <div class="container">
         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
-          action="<%= adminbaseurl %>service">
+          action="<%= adminbaseurl %>testimonial">
           <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="service_title">Service Title</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                  <input type="text" name="service_title" class="form-control" id="service_title" placeholder="Enter Title"
-                    value="<%=arrServiceData ? arrServiceData.service_title : '' %>" required>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="row">
             <div class="col-md-3 field-label-responsive">
               <label for="name">Name</label>
             </div>
@@ -46,73 +30,52 @@
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                   <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name"
-                    value="<%=arrServiceData ? arrServiceData.name : '' %>" required>
+                    value="<%=arrTestimonialData ? arrTestimonialData.name : '' %>" required>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
           <div class="row">
             <div class="col-md-3 field-label-responsive">
-              <label for="description">Description</label>
+              <label for="profession">Profession</label>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                  <textarea type="text" name="description" class="form-control" id="description" placeholder = "enter description" required>
-                    <%=arrServiceData ? arrServiceData.description : '' %></textarea>
+                  <input type="text" name="profession" class="form-control" id="profession" placeholder="profession"
+                    value="<%=arrTestimonialData ? arrTestimonialData.profession : '' %>" required>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 field-label-responsive">
-              <label for="url">URL</label>
+              <label for="intro">Intro</label>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                  <input type="text" name="url" class="form-control" id="url" placeholder="Enter URL"
-                    value="<%=arrServiceData ? arrServiceData.url : '' %>" required>
+                  <textarea type="text" name="intro" class="form-control" id="intro" placeholder = "enter intro" required>
+                    <%=arrTestimonialData ? arrTestimonialData.intro : '' %></textarea>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 field-label-responsive">
-              <label>Active</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
-                  <select class="form-control" name="status">
-                    <option value=''>choose....</option>
-                    <option <% if(arrServiceData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
-                    </option>
-                    <option <% if(arrServiceData.status=='No'){ %>selected="selected" <% }%> value="No">
-                        No</option>
-                    <option <% if(arrServiceData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="logo">Logo</label>
+              <label for="dp">DP</label>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"></div>
-                  <input type="file" class="form-group" id="logo" name="logo" accept="logo/*" onchange="preView()"
-                    value="<%= arrServiceData ? arrServiceData.logo : '' %>">
-                  <% if(arrServiceData.logo !='' && arrServiceData.logo != null){%>
+                  <input type="file" class="form-group" id="dp" name="dp" accept="dp/*" onchange="preView()"
+                    value="<%= arrTestimonialData ? arrTestimonialData.dp : '' %>">
+                  <% if(arrTestimonialData.dp !='' && arrTestimonialData.dp != null){%>
                   <img id="preview"
-                    src="<%= adminbaseurl + 'web-contents/Service/'+arrServiceData.service_id+'/' + arrServiceData.logo %>"
+                    src="<%= adminbaseurl + 'web-contents/Testimonial/'+arrTestimonialData.testimonial_id+'/' + arrTestimonialData.dp %>"
                     style="height:80px;width:80px;" class="img-thumbnail" />
                   <% }else{ %>
                   <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"
@@ -125,9 +88,9 @@
           <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-12">
-              <input type="hidden" name="form_service_id" value="<%= arrServiceData ? arrServiceData.service_id : '' %>">
+              <input type="hidden" name="form_testimonial_id" value="<%= arrTestimonialData ? arrTestimonialData.testimonial_id : '' %>">
               <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
-                <%= arrServiceData ? 'Update' : 'Submit' %></button>
+                <%= arrTestimonialData ? 'Update' : 'Submit' %></button>
             </div>
           </div>
         </form>
@@ -137,14 +100,14 @@
 
       <script>
         function preView() {
-          var fileInput = document.getElementById('logo');
+          var fileInput = document.getElementById('dp');
           var filePath = fileInput.value;
           var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
           if (!allowedExtensions.exec(filePath)) {
             fileInput.value = '';
             return false;
           } else {
-            //logo preview
+            //dp preview
             if (fileInput.files && fileInput.files[0]) {
               var reader = new FileReader();
               reader.onload = function () {
@@ -152,7 +115,7 @@
                 output.src = reader.result;
               };
               reader.readAsDataURL(event.target.files[0]);
-              $("#logo-error").remove();
+              $("#dp-error").remove();
             };
           }
           // $("#x_content").click(); 
