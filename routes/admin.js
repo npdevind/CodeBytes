@@ -96,6 +96,13 @@ router.get('/admin-user/delete/:admin_user_id?', checkAdminLogin, middleHandler,
 router.post('/admin-user/admin-set-password', checkAdminLogin, middleHandler, adminController.setPassword);
 //////////////////////////////////// Admin ends ////////////////////////////////////////////////////////
 
+//////////////////////////////////// AboutUs Start ////////////////////////////////////////////////////////
+const aboutusController = require('../controller/admin/aboutusController');
+router.get('/aboutus/:aboutus_id?', checkAdminLogin, middleHandler, aboutusController.load);
+router.post('/aboutus', checkAdminLogin, middleHandler, aboutusController.saveOrUpdate);
+router.get('/aboutus/delete/:aboutus_id?', checkAdminLogin, middleHandler, aboutusController.delete);
+//////////////////////////////////// AboutUs ends ////////////////////////////////////////////////////////
+
 //////////////////////////////////// Contact Start ////////////////////////////////////////////////////////
 const contactController = require('../controller/admin/contactusController');
 router.get('/contactus/:contact_id?', checkAdminLogin, middleHandler, contactController.load);
@@ -143,5 +150,22 @@ router.get('/service/:service_id?', checkAdminLogin, middleHandler, serviceContr
 router.post('/service', checkAdminLogin, middleHandler, serviceController.saveOrUpdate);
 router.get('/service/delete/:service_id?', checkAdminLogin, middleHandler, serviceController.delete);
 //////////////////////////////////// Service ends ////////////////////////////////////////////////////////
+
+//////////////////////////////////// Testimonial Start ////////////////////////////////////////////////////////
+const testimonialController = require('../controller/admin/testimonialController');
+router.get('/testimonial/list', checkAdminLogin, middleHandler, testimonialController.list);
+router.get('/testimonial/:testimonial_id?', checkAdminLogin, middleHandler, testimonialController.load);
+router.post('/testimonial', checkAdminLogin, middleHandler, testimonialController.saveOrUpdate);
+router.get('/testimonial/delete/:testimonial_id?', checkAdminLogin, middleHandler, testimonialController.delete);
+//////////////////////////////////// Testimonial ends ////////////////////////////////////////////////////////
+
+
+//////////////////////////////////// FAQ Start ////////////////////////////////////////////////////////
+const faqController = require('../controller/admin/faqController');
+router.get('/faq/list', checkAdminLogin, middleHandler, faqController.list);
+router.get('/faq/:faq_id?', checkAdminLogin, middleHandler, faqController.load);
+router.post('/faq', checkAdminLogin, middleHandler, faqController.saveOrUpdate);
+router.get('/faq/delete/:faq_id?', checkAdminLogin, middleHandler, faqController.delete);
+//////////////////////////////////// FAQ ends ////////////////////////////////////////////////////////
 
 module.exports = router;

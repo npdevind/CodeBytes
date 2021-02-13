@@ -91,7 +91,7 @@ exports.saveOrUpdate = async function (req, res) {
         if (!feature_id) {
 
             models.Feature.create({
-                name: fields.name[0],
+                url: fields.url[0],
                 status: fields.status[0],
                 logo: userFinalImage,
                 feature_title: fields.feature_title[0]
@@ -116,7 +116,7 @@ exports.saveOrUpdate = async function (req, res) {
             var featureTableDetails = await models.Feature.findOne({ where: { feature_id: feature_id } });
             var adminOldImage = featureTableDetails.image;
             models.Feature.update({
-                name: fields.name[0],
+                url: fields.url[0],
                 status: fields.status[0],
                 feature_title: fields.feature_title[0],
                 logo: userFinalImage ? userFinalImage : adminOldImage
