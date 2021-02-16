@@ -21,12 +21,25 @@ var sequelize = new Sequelize(
 });
 
 exports.home = async function(req,res){
+
     var contactTableDetails = await models.ContactUs.findOne({where:{status:'Yes'}});
     var teamTableDetails = await models.Team.findAll();
-    var portappTableDetails = await models.Portfolio.findAll({where:{type:'APP'}});
-    var portcardTableDetails = await models.Portfolio.findAll({where:{type:'CARD'}});
-    var portwebTableDetails = await models.Portfolio.findAll({where:{type:'WEB'}});
-    var typeCount = await sequelize.query("SELECT COUNT(type),type FROM portfolio GROUP BY type",{ type: sequelize.QueryTypes.SELECT });
+
+    var portTypeCount = await sequelize.query("SELECT COUNT(type),type FROM portfolio GROUP BY type",{ type: sequelize.QueryTypes.SELECT });
+    var ARR_PortTypeCount = [];
+    for(var i=0; i < portTypeCount.length; i++){
+        var getProtValues = await models.Portfolio.findAll({where:{type:portTypeCount[i].type}});
+        for(var j=0; j < getProtValues.length; j++){
+            ARR_PortTypeCount.push({
+                "portfolio_id" : getProtValues[j].portfolio_id,
+                "screen_shot" : getProtValues[j].screen_shot,
+                "name" : getProtValues[j].name,
+                "type" : getProtValues[j].type
+            })
+        }
+        
+    }
+
     var featureTableDetails = await models.Feature.findAll();
     var serviceTableDetails = await models.Service.findAll();
     var aboutusTableDetails = await models.AboutUs.findAll();
@@ -36,10 +49,8 @@ exports.home = async function(req,res){
     return res.render("codebytes/home/index",{
         contactTableDetails :contactTableDetails ? contactTableDetails :'',
         arrTeamData: teamTableDetails ? teamTableDetails : '',
-        arrPortappData: portappTableDetails ? portappTableDetails : '',
-        arrPortcardData: portcardTableDetails ? portcardTableDetails : '',
-        arrPortwebData: portwebTableDetails ? portwebTableDetails : '',
-        arrtypeCount :typeCount ? typeCount : '',
+        arrtypeCount :portTypeCount ? portTypeCount : '',
+        ARR_PortTypeCount : ARR_PortTypeCount ? ARR_PortTypeCount : '',
         arrFeatureData : featureTableDetails ? featureTableDetails : '',
         arrServiceData : serviceTableDetails ? serviceTableDetails : '',
         arrAboutUsData : aboutusTableDetails ? aboutusTableDetails : '',

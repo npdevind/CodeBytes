@@ -12,9 +12,9 @@ var sequelize = new Sequelize(
         dialect: 'mysql',
         logging: false,
         pool: {
-            max: 5,
-            min: 0,
-            idle: 10000
+        max: 5,
+        min: 0,
+        idle: 10000
     }
 });
 /**
@@ -166,6 +166,14 @@ router.get('/faq/list', checkAdminLogin, middleHandler, faqController.list);
 router.get('/faq/:faq_id?', checkAdminLogin, middleHandler, faqController.load);
 router.post('/faq', checkAdminLogin, middleHandler, faqController.saveOrUpdate);
 router.get('/faq/delete/:faq_id?', checkAdminLogin, middleHandler, faqController.delete);
+//////////////////////////////////// FAQ ends ////////////////////////////////////////////////////////
+
+//////////////////////////////////// FAQ Start ////////////////////////////////////////////////////////
+const devController = require('../controller/admin/developerController');
+router.get('/dev/list', checkAdminLogin, middleHandler, devController.list);
+router.get('/dev/:dev_id?', checkAdminLogin, middleHandler, devController.load);
+router.post('/dev', checkAdminLogin, middleHandler, devController.saveOrUpdate);
+router.get('/dev/delete/:faq_id?', checkAdminLogin, middleHandler, devController.delete);
 //////////////////////////////////// FAQ ends ////////////////////////////////////////////////////////
 
 module.exports = router;

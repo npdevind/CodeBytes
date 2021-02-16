@@ -376,7 +376,7 @@
       </div>
 
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
-        <% var i=1; arrPortappData.forEach(function(val){ %>
+        <% var i=0; ARR_PortTypeCount.forEach(function(val){ %>
         <div class="col-lg-4 col-md-6 portfolio-item filter-<%=val.type%>">
           <div class="portfolio-wrap">
             <%
@@ -391,57 +391,13 @@
               <div class="portfolio-links">
                 <a href="<%= screen_shot %>" data-gall="portfolioGallery" class="venobox" title="<%=val.name%>"><i
                     class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
               </div>
             </div>
           </div>
         </div>
         <% }) %>
-
-
-        <% var i=1; arrPortcardData.forEach(function(val){ %>
-        <div class="col-lg-4 col-md-6 portfolio-item filter-<%=val.type%>">
-          <div class="portfolio-wrap">
-            <%
-            var screen_shot = 'Portfolio/'+val.portfolio_id+'/'+val.screen_shot;
-            if(helper.isFileExistsIn(screen_shot)) screen_shot = adminbaseurl +'web-contents/'+  screen_shot;
-            else screen_shot = baseurl + "web-contents/user.png";
-            %>
-            <img src="<%= screen_shot %>" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4><%=val.name%></h4>
-              <p><%=val.type%></p>
-              <div class="portfolio-links">
-                <a href="<%= screen_shot %>" data-gall="portfolioGallery" class="venobox" title="<%=val.name%>"><i
-                    class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% }) %>
-
-        <% var i=1; arrPortwebData.forEach(function(val){ %>
-        <div class="col-lg-4 col-md-6 portfolio-item filter-<%=val.type%>">
-          <div class="portfolio-wrap">
-            <%
-            var screen_shot = 'Portfolio/'+val.portfolio_id+'/'+val.screen_shot;
-            if(helper.isFileExistsIn(screen_shot)) screen_shot = adminbaseurl +'web-contents/'+  screen_shot;
-            else screen_shot = baseurl + "web-contents/user.png";
-            %>
-            <img src="<%= screen_shot %>" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4><%=val.name%></h4>
-              <p><%=val.type%></p>
-              <div class="portfolio-links">
-                <a href="<%= screen_shot %>" data-gall="portfolioGallery" class="venobox" title="<%=val.name%>"><i
-                    class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% }) %>
+      </div>
 
         <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
@@ -578,7 +534,7 @@
           </div>
         </div> -->
 
-      </div>
+      
 
     </div>
   </section><!-- End Portfolio Section -->
