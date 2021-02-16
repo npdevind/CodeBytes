@@ -23,8 +23,10 @@ var sequelize = new Sequelize(
 
 exports.list = async function(req,res){
     var contactTableDetails = await models.ContactUs.findOne({where:{status:'Yes'}});
+    var blogCategory = await models.BlogCategory.findAll({where:{status:'Yes'}});
     return res.render("codebytes/blog/list",{
-        contactTableDetails :contactTableDetails ? contactTableDetails :'',
+        contactTableDetails :contactTableDetails ? contactTableDetails :'',        
+        arrBlogCategory : blogCategory ? blogCategory: '',
         helper : helper
     });
 }

@@ -6,12 +6,12 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true,
         autoIncrement: true
       },
-      dev_id:{
-        type: DataTypes.INTEGER(11),
+      title:{
+        type: DataTypes.STRING(200),
         allowNull: true
       },
-      blog_id:{
-        type: DataTypes.INTEGER(11),
+      image:{
+        type: DataTypes.TEXT,
         allowNull: true
       },
       status:{

@@ -50,7 +50,7 @@ exports.load = async function (req, res) {
     if (dev_id && dev_id != undefined) {
         devTableDetails = await models.Developer.findOne({ where: { dev_id: dev_id } });
         return res.render('admin/developer/addedit', {
-            title: 'Edit FAQ',
+            title: 'Edit Developer',
             arrDevData: devTableDetails,
             helper: helper,
             messages: req.flash('info'),
@@ -58,7 +58,7 @@ exports.load = async function (req, res) {
         });
     } else {
         return res.render('admin/developer/addedit', {
-            title: 'Add FAQ',
+            title: 'Add Developer',
             arrDevData: '',
             helper: helper,
             messages: req.flash('info'),

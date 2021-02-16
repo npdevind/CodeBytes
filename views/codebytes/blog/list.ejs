@@ -1,207 +1,159 @@
 <%- include ('../partials/header') %>
 
-<!-- ======= Hero Section ======= -->
-<section id="home" class="d-flex align-items-center">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-        <h1 data-aos="fade-up">Learn more with CodesByte</h1>
-        <h3 data-aos="fade-up" data-aos-delay="400">Wellcome to CodesByte Dev Blog</h3>
-        <div data-aos="fade-up" data-aos-delay="800">
-          <a href="#contact" class="btn-get-started scrollto">Connect With Us</a>
-        </div>
-      </div>
-      <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-        <img src="<%= baseurl %>codesbyte/assets/img/blog.png" class="img-fluid animated" alt="">
-      </div>
-    </div>
-  </div>
-
-</section><!-- End Hero -->
-
-<main id="main">
-
-  <section id="features" class="features">
-    <div class="container">
-
-      <div class="section-title" data-aos="fade-up">
-        <h2>Blogs</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
-      </div>
-
-      <div class="row" data-aos="fade-up" data-aos-delay="300">
-        <div class="col-lg-3 col-md-4">
-          <div class="icon-box">
-            <i class="ri-store-line" style="color: #ffbb2c;"></i>
-            <h3><a href="">Lorem Ipsum</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-            <h3><a href="">Dolor Sitema</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-            <h3><a href="">Sed perspiciatis</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-            <h3><a href="">Magni Dolores</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-database-2-line" style="color: #47aeff;"></i>
-            <h3><a href="">Nemo Enim</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-            <h3><a href="">Eiusmod Tempor</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-            <h3><a href="">Midela Teren</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-            <h3><a href="">Pira Neve</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-anchor-line" style="color: #b2904f;"></i>
-            <h3><a href="">Dirada Pack</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-disc-line" style="color: #b20969;"></i>
-            <h3><a href="">Moton Ideal</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-base-station-line" style="color: #ff5828;"></i>
-            <h3><a href="">Verdo Park</a></h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-            <h3><a href="">Flavor Nivelanda</a></h3>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-   
-
-   <!-- ======= Contact Section ======= -->
-   <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <h2>Contact Us</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="contact-about">
-            <%
-              var image = 'ContactUs/'+contactTableDetails.contact_id+'/'+contactTableDetails.logo;
-              if(helper.isFileExistsIn(image)) image = adminbaseurl +'web-contents/'+  image;
-              else image = baseurl + "web-contents/user.png";
-              %>
-            <img src="<%= image %>" class="oc-profile-picture" style="width: 200px; height: 53px;">
-            <br><br>
-            <p><%=contactTableDetails.description%></p>
-            <div class="social-links">
-              <a href="<%=contactTableDetails.twitter_id%>" target="_blank" class="twitter"><i
-                  class="icofont-twitter"></i></a>
-              <a href="<%=contactTableDetails.fb_id%>" target="_blank" class="facebook"><i
-                  class="icofont-facebook"></i></a>
-              <a href="<%=contactTableDetails.insta_id%>" target="_blank" class="instagram"><i
-                  class="icofont-instagram"></i></a>
-              <a href="<%=contactTableDetails.linkdin_id%>" target="_blank" class="linkedin"><i
-                  class="icofont-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-          <div class="info">
-            <div>
-              <i class="ri-map-pin-line"></i>
-              <p><%=contactTableDetails.location%></p>
-            </div>
-            <div>
-              <i class="ri-mail-send-line"></i>
-              <p><%=contactTableDetails.email%></p>
-            </div>
-            <div>
-              <i class="ri-phone-line"></i>
-              <p><%=contactTableDetails.mobile%></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-          <form action="/send" method="POST" enctype="multipart/form-data" role="form" class="php-email-form">
-            <div class="form-group">
-              <input type="text" name="name" class="form-control" id="sender_name" placeholder="Your Name"
-                data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-              <div class="validate"></div>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" name="to" id="sender_to" placeholder="Your Email"
-                data-rule="email" data-msg="Please enter a valid email" />
-              <div class="validate"></div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="sender_subject" placeholder="Subject"
-                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validate"></div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" id="sender_message" rows="5" data-rule="required"
-                data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validate"></div>
-            </div>
-            <div class="mb-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Contact Section -->
-
-
-</main><!-- End #main -->
-
-<%- include ('../partials/footer') %>
-
-<script>
-  var url = window.location.href;  
-  var takeUrl = url.substr(-4);
-  if(takeUrl == 'blog'){
-    $('.hdMenu').hide();
+<style>
+  .npdes{
+    position: relative;
+    top: 1px;
+    left: 7px;
+    font-size: 20px;
   }
-</script>
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="home" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Learn more with CodesByte</h1>
+          <h3 data-aos="fade-up" data-aos-delay="400">Wellcome to CodesByte Dev Blog</h3>
+          <div data-aos="fade-up" data-aos-delay="800">
+            <a href="#contact" class="btn-get-started scrollto">Connect With Us</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+          <img src="<%= baseurl %>codesbyte/assets/img/blog.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <section id="features" class="features">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Blogs</h2>
+          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+        </div>
+
+
+        <div class="row" data-aos="fade-up" data-aos-delay="300">
+          <% arrBlogCategory.forEach(function(val){ %>
+            <div class="col-lg-3 col-md-4">
+              <div class="icon-box">
+                <!-- <i class="ri-store-line" style="color: #ffbb2c;"></i> -->
+                <img src="<%= baseurl %>codesbyte/assets/img/blog/catgory_blog/<%= val.image %>" style="height: 35px;">
+                <h2><a class="npdes" href=""><%=val.title%></a></h2>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Contact Us</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-about">
+              <% var image='ContactUs/' +contactTableDetails.contact_id+'/'+contactTableDetails.logo;
+                if(helper.isFileExistsIn(image)) image=adminbaseurl +'web-contents/'+ image; else image=baseurl
+                + "web-contents/user.png" ; %>
+                <img src="<%= image %>" class="oc-profile-picture" style="width: 200px; height: 53px;">
+                <br><br>
+                <p>
+                  <%=contactTableDetails.description%>
+                </p>
+                <div class="social-links">
+                  <a href="<%=contactTableDetails.twitter_id%>" target="_blank" class="twitter"><i
+                      class="icofont-twitter"></i></a>
+                  <a href="<%=contactTableDetails.fb_id%>" target="_blank" class="facebook"><i
+                      class="icofont-facebook"></i></a>
+                  <a href="<%=contactTableDetails.insta_id%>" target="_blank" class="instagram"><i
+                      class="icofont-instagram"></i></a>
+                  <a href="<%=contactTableDetails.linkdin_id%>" target="_blank" class="linkedin"><i
+                      class="icofont-linkedin"></i></a>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="info">
+              <div>
+                <i class="ri-map-pin-line"></i>
+                <p>
+                  <%=contactTableDetails.location%>
+                </p>
+              </div>
+              <div>
+                <i class="ri-mail-send-line"></i>
+                <p>
+                  <%=contactTableDetails.email%>
+                </p>
+              </div>
+              <div>
+                <i class="ri-phone-line"></i>
+                <p>
+                  <%=contactTableDetails.mobile%>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+            <form action="/send" method="POST" enctype="multipart/form-data" role="form" class="php-email-form">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" id="sender_name" placeholder="Your Name"
+                  data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="to" id="sender_to" placeholder="Your Email"
+                  data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="sender_subject" placeholder="Subject"
+                  data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" id="sender_message" rows="5" data-rule="required"
+                  data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+
+  </main><!-- End #main -->
+
+  <%- include ('../partials/footer') %>
+
+    <script>
+      var url = window.location.href;
+      var takeUrl = url.substr(-4);
+      if (takeUrl == 'blog') {
+        $('.hdMenu').hide();
+      }
+    </script>
