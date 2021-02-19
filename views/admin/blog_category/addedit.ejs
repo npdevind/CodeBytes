@@ -15,38 +15,24 @@
       <%=title%>
     </h2>
     <div>
-      <a href="<%=adminbaseurl%>developer/list"> Developer List </a>
+      <a href="<%=adminbaseurl%>blog_category/list"> BlogCat List </a>
       <%- include ('../flashMessage') %>
       <hr>
       
       
       <div class="container">
         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
-          action="<%= adminbaseurl %>developer">
+          action="<%= adminbaseurl %>blog_category">
           <div class="row">
             <div class="col-md-3 field-label-responsive">
-              <label for="name">Name</label>
+              <label for="title">Title</label>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name"
-                    value="<%=arrDevData ? arrDevData.name : '' %>" required>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 field-label-responsive">
-              <label for="position">Position</label>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                  <input type="text" name="position" class="form-control" id="position" placeholder="Enter Position"
-                    value="<%=arrDevData ? arrDevData.position : '' %>" required>
+                  <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title"
+                    value="<%=arrBlogCatData ? arrBlogCatData.title : '' %>" required>
                 </div>
               </div>
             </div>
@@ -61,11 +47,11 @@
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
                   <select class="form-control" name="status">
                     <option value=''>choose....</option>
-                    <option <% if(arrDevData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
+                    <option <% if(arrBlogCatData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
                     </option>
-                    <option <% if(arrDevData.status=='No'){ %>selected="selected" <% }%> value="No">
+                    <option <% if(arrBlogCatData.status=='No'){ %>selected="selected" <% }%> value="No">
                         No</option>
-                    <option <% if(arrDevData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
+                    <option <% if(arrBlogCatData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
                     </option>
                   </select>
                 </div>
@@ -81,10 +67,10 @@
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"></div>
                   <input type="file" class="form-group" id="image" name="image" accept="image/*" onchange="preView()"
-                    value="<%= arrDevData ? arrDevData.image : '' %>">
-                  <% if(arrDevData.image !='' && arrDevData.image != null){%>
+                    value="<%= arrBlogCatData ? arrBlogCatData.image : '' %>">
+                  <% if(arrBlogCatData.image !='' && arrBlogCatData.image != null){%>
                   <img id="preview"
-                    src="<%= adminbaseurl+'web-contents/Developer/'+arrDevData.dev_id+'/' + arrDevData.image %>"
+                    src="<%= adminbaseurl + 'web-contents/catgory_blog/' + '/'+arrBlogCatData.blg_cat_id+'/' + arrBlogCatData.image %>"
                     style="height:80px;width:80px;" class="img-thumbnail" />
                   <% }else{ %>
                   <img id="preview" src="<%= baseurl + 'user.png' %>" style="height:80px;width:80px;"
@@ -97,9 +83,9 @@
           <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-12">
-              <input type="hidden" name="form_dev_id" value="<%= arrDevData ? arrDevData.dev_id : '' %>">
+              <input type="hidden" name="form_blg_cat_id" value="<%= arrBlogCatData ? arrBlogCatData.blg_cat_id : '' %>">
               <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
-                <%= arrDevData ? 'Update' : 'Submit' %></button>
+                <%= arrBlogCatData ? 'Update' : 'Submit' %></button>
             </div>
           </div>
         </form>

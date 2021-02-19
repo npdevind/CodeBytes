@@ -35,7 +35,7 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Blogs</h2>
+          <h2>Blog List</h2>
           <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
         </div>
 
@@ -45,13 +45,8 @@
             <div class="col-lg-3 col-md-4">
               <div class="icon-box">
                 <!-- <i class="ri-store-line" style="color: #ffbb2c;"></i> -->
-                <%
-                var image = 'catgory_blog/'+val.blg_cat_id+'/'+val.image;
-                if(helper.isFileExistsIn(image)) image = adminbaseurl+'web-contents/'+  image;
-                else image = baseurl + "user.png";
-                %>
-                <img src="<%=image %>" style="height: 35px;">
-                <h2><a class="npdes" href="<%= baseurl %>blogs" target="_blank"><%=val.title%></a></h2>
+                <img src="<%= baseurl %>codesbyte/assets/img/blog/catgory_blog/<%= val.image %>" style="height: 35px;">
+                <h2><a class="npdes" href=""><%=val.title%></a></h2>
               </div>
             </div>
             <% }) %>

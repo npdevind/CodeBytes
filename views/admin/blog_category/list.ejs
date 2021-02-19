@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <h2><%=title%></h2>
         <div>
-            <a href="<%=adminbaseurl%>developer"> Add Developer </a>
+            <a href="<%=adminbaseurl%>blog_category"> Add BlogCat </a>
             <%- include ('../flashMessage') %>
         </div>
         <hr>
@@ -22,33 +22,31 @@
                     <tr>
                         <th class="text-center">SL</th>
                         <th class="text-center">Image</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Position</th>
+                        <th class="text-center">Title</th>
                         <th class="text-center">Active</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% var i=1; arrDevData.forEach(function(val){ %>
+                    <% var i=1; arrBlogCatData.forEach(function(val){ %>
                     <tr>
                         <td class="text-center"><%= i; %> <%! i++; %> </td>
                         <td class="text-center"> <%
-                            var image = 'Developer/'+val.dev_id+'/'+val.image;
-                            if(helper.isFileExistsIn(image)) image = adminbaseurl +'web-contents/'+  image;
-                            else image = baseurl + "user.png";
+                            var image = 'catgory_blog/'+val.blg_cat_id+'/'+val.image;
+                            if(helper.isFileExistsIn(image)) image = adminbaseurl+'web-contents/'+  image;
+                            else image = baseurl + "web-contents/user.png";
                             %>
                             <img src="<%= image %>" class="oc-profile-picture" style="width: 50px; height: 50px;"></td>
-                            <td class="text-center"><%= val.name %></td>
-                            <td class="text-center"><%= val.position %></td>
+                            <td class="text-center"><%= val.title %></td>
                             <td class="text-center"><%= val.status %></td>
                             <td class="text-center">
                             <a rel="tooltip" class="btn btn-success btn-just-icon btn-sm"
-                                href="<%= adminbaseurl%>developer/<%= val.dev_id %>" data-original-title="" title="">
+                                href="<%= adminbaseurl%>blog_category/<%= val.blg_cat_id %>" data-original-title="" title="">
                                 <i class="material-icons">edit</i>
                             </a>
                             <a rel="tooltip" class="btn btn-danger btn-just-icon btn-sm"
                                 onclick="return confirm('Are you sure to delete?')"
-                                href="<%= adminbaseurl%>developer/delete/<%= val.dev_id %>" data-original-title=""
+                                href="<%= adminbaseurl%>blog_category/delete/<%= val.blg_cat_id %>" data-original-title=""
                                 title="">
                                 <i class="material-icons">close</i>
                             </a>

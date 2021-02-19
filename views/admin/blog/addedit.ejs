@@ -1,0 +1,120 @@
+<%- include ('../layouts/header') %>
+<%- include ('../layouts/sidebar') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+  href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+  integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+
+
+<main class="page-content">
+  <div class="container-fluid">
+    <h2>
+      <%=title%>
+    </h2>
+    <div>
+      <a href="<%=adminbaseurl%>blog/list"> Blog List </a>
+      <%- include ('../flashMessage') %>
+      <hr>
+      <div class="container">
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
+          action="<%= adminbaseurl %>blog">
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="category_id">Category Id</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="category_id" class="form-control" id="category_id" placeholder="Enter Category"
+                    value="<%=arrBlogData ? arrBlogData.category_id : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="title">Title</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title"
+                    value="<%=arrBlogData ? arrBlogData.title : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="description">Description</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="description" class="form-control" id="description" placeholder="Enter description"
+                    value="<%=arrBlogData ? arrBlogData.description : '' %>" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label for="content">Content</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+                  <textarea type="text" name="content" class="form-control" id="content" placeholder = "Enter content" required>
+                    <%=arrBlogData ? arrBlogData.content : '' %></textarea>
+                    <script>
+                      CKEDITOR.replace( 'content' );
+                      var TextGrab = CKEDITOR.instances['content'].getData();
+                      TextGrab = $(TextGrab).text().replace(/\r?\n|\r/gm," ").replace(/\s\s+/g, " ").trim(); // html to text  
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 field-label-responsive">
+              <label>Active</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-database"></i></div>
+                  <select class="form-control" name="status">
+                    <option value=''>choose....</option>
+                    <option <% if(arrBlogData.status=='Yes'){ %>selected="selected" <% }%> value="Yes">Yes
+                    </option>
+                    <option <% if(arrBlogData.status=='No'){ %>selected="selected" <% }%> value="No">
+                        No</option>
+                    <option <% if(arrBlogData.status=='Blocked'){ %>selected="selected" <% }%> value="Blocked">Blocked
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-12">
+              <input type="hidden" name="form_blog_id" value="<%= arrBlogData ? arrBlogData.blog_id : '' %>">
+              <button type="submit" style ="float:right;" class="btn btn-success"><i class="fa fa-user-plus"></i>
+                <%= arrBlogData ? 'Update' : 'Submit' %></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <%- include ('../layouts/footer') %>
+
+      

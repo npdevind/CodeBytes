@@ -24,13 +24,13 @@ var sequelize = new Sequelize(
 
 
 exports.list = async function (req, res) {
-    var developerTableDetails = await models.Developer.findAll({ where: { status: 'Yes' } });
+    var blogcatTableDetails = await models.BlogCategory.findAll({ where: { status: 'Yes' } });
     var adminTableDetails = await models.Admin.findOne({ where: { status: 'Yes' } });
-    if (developerTableDetails) {
-        return res.render('admin/developer/list', {
+    if (blogcatTableDetails) {
+        return res.render('admin/blog_category/list', {
             adminTableDetails: adminTableDetails,
-            title: 'Developer List',
-            arrDevData: developerTableDetails,
+            title: 'BlogCat List',
+            arrBlogCatData: blogcatTableDetails,
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
@@ -38,10 +38,10 @@ exports.list = async function (req, res) {
         });
 
     } else {
-        return res.render('admin/developer/list', {
+        return res.render('admin/blog_category/list', {
             adminTableDetails: adminTableDetails,
-            title: 'Developer List',
-            arrDevData: '',
+            title: 'BlogCat List',
+            arrBlogCatData: '',
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
@@ -51,24 +51,24 @@ exports.list = async function (req, res) {
 }
 
 exports.load = async function (req, res) {
-    var dev_id = req.params.dev_id;
-    var developerTableDetails = '';
+    var blg_cat_id = req.params.blg_cat_id;
+    var blogcatTableDetails = '';
     var adminTableDetails = await models.Admin.findOne({ where: { status: 'Yes' } });
-    if (dev_id && dev_id != undefined) {
-        developerTableDetails = await models.Developer.findOne({ where: { dev_id: dev_id } });
-        return res.render('admin/developer/addedit', {
+    if (blg_cat_id && blg_cat_id != undefined) {
+        blogcatTableDetails = await models.BlogCategory.findOne({ where: { blg_cat_id: blg_cat_id } });
+        return res.render('admin/blog_category/addedit', {
             adminTableDetails: adminTableDetails,
-            title: 'Edit Developer',
-            arrDevData: developerTableDetails,
+            title: 'Edit BlogCat',
+            arrBlogCatData: blogcatTableDetails,
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
         });
     } else {
-        return res.render('admin/developer/addedit', {
+        return res.render('admin/blog_category/addedit', {
             adminTableDetails: adminTableDetails,
-            title: 'Add Developer',
-            arrDevData: '',
+            title: 'Add BlogCat',
+            arrBlogCatData: '',
             helper: helper,
             messages: req.flash('info'),
             errors: req.flash('errors')
@@ -80,7 +80,7 @@ exports.load = async function (req, res) {
 exports.saveOrUpdate = async function (req, res) {
     var form = new multiparty.Form();
     form.parse(req, async function (err, fields, files) {
-        var dev_id = fields.form_dev_id[0];
+        var blg_cat_id = fields.form_blg_cat_id[0];
         var formImage = files.image[0].originalFilename;
         if (formImage != '') {
             var ImageExt = formImage.split('.').pop();
@@ -88,23 +88,22 @@ exports.saveOrUpdate = async function (req, res) {
             var userFinalImage = adminImagewithEXT.replace("[object Object]", "");
         }
 
-        if (!dev_id) {
+        if (!blg_cat_id) {
 
-            models.Developer.create({
-                name: fields.name[0],
-                position: fields.position[0],
-                image: userFinalImage,
-                status: fields.status[0]
-            }).then(function (dev_crt) {
-                if (dev_crt) {
+            models.BlogCategory.create({
+                title: fields.title[0],
+                status: fields.status[0],
+                image: userFinalImage
+            }).then(function (blgcat_crt) {
+                if (blgcat_crt) {
                     if (files.image[0] != '' && files.image[0] != null) {
-                        helper.createDirectory('public/admin/web-contents/Developer/' + dev_crt.dev_id + '/');
+                        helper.createDirectory('public/admin/web-contents/catgory_blog/' + blgcat_crt.blg_cat_id + '/');
                         var temp_path = files.image[0].path;
-                        var target_path = 'Developer/' + dev_crt.dev_id + '/' + userFinalImage;
+                        var target_path = 'catgory_blog/' +blgcat_crt.blg_cat_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);
                     }
                     req.flash('info', 'Successfully Created');
-                    return res.redirect('/admin/developer/' +dev_crt.dev_id);
+                    return res.redirect('/admin/blog_category/' + blgcat_crt.blg_cat_id);
                 } else {
                     req.flash('errors', 'Something Worng! Please try again.');
                     return res.redirect('back');
@@ -112,21 +111,20 @@ exports.saveOrUpdate = async function (req, res) {
             })
 
         } else {
-            var developerTableDetails = await models.Developer.findOne({ where: { dev_id: dev_id } });
-            var devOldImage = developerTableDetails.image;
+            var blogcatTableDetails = await models.BlogCategory.findOne({ where: { blg_cat_id: blg_cat_id } });
+            var blogcatOldImage = blogcatTableDetails.image;
 
-            models.Developer.update({
-                name: fields.name[0],
-                position: fields.position[0],
+            models.BlogCategory.update({
+                title: fields.title[0],
                 status: fields.status[0],
-                image: userFinalImage ? userFinalImage : devOldImage
+                image: userFinalImage ? userFinalImage : blogcatOldImage
 
-            }, { where: { dev_id: dev_id } }).then(function (dev_upd) {
-                if (dev_upd) {
+            }, { where: { blg_cat_id: blg_cat_id } }).then(function (blogcat_upd) {
+                if (blogcat_upd) {
                     if (files.image[0] != '' && files.image[0] != null) {
-                        helper.createDirectory('public/admin/web-contents/Developer/' + dev_upd.dev_id + '/');
+                        helper.createDirectory('public/admin/web-contents/catgory_blog/' + blogcat_upd.blg_cat_id + '/');
                         var temp_path = files.image[0].path;
-                        var target_path = 'Developer/' + dev_id + '/' + userFinalImage;
+                        var target_path = 'catgory_blog/' + blg_cat_id + '/' + userFinalImage;
                         helper.uploadFiles(temp_path, target_path);
                     }
                     req.flash('info', 'Successfully Updated');
@@ -144,19 +142,19 @@ exports.saveOrUpdate = async function (req, res) {
 
 exports.delete = async function (req, res, next) {
 
-    models.Developer.destroy({
+    models.BlogCategory.destroy({
         where: {
-            dev_id: req.params.dev_id //this will be your id that you want to delete
+            blg_cat_id: req.params.blg_cat_id //this will be your id that you want to delete
         }
     }).then(function (rowDeleted) { // rowDeleted will return number of rows deleted
         if (rowDeleted === 1) {
-            req.flash('info', "Developer successfully deleted");
+            req.flash('info', "Blog Category successfully deleted");
         } else {
-            req.flash('err', "Failed to delete Developer. Please try again");
+            req.flash('err', "Failed to delete Blog Category. Please try again");
         }
-        return res.redirect('/admin/developer/list');
+        return res.redirect('/admin/blog_category/list');
     }, function (err) {
-        req.flash('err', "Failed to delete Developer. Please try again");
-        return res.redirect('/admin/developer/list');
+        req.flash('err', "Failed to delete Blog Category. Please try again");
+        return res.redirect('/admin/blog_category/list');
     });
 }

@@ -159,13 +159,13 @@ router.post('/testimonial', checkAdminLogin, middleHandler, testimonialControlle
 router.get('/testimonial/delete/:testimonial_id?', checkAdminLogin, middleHandler, testimonialController.delete);
 //////////////////////////////////// Testimonial ends ////////////////////////////////////////////////////////
 
-//////////////////////////////////// FAQ Start ////////////////////////////////////////////////////////
+//////////////////////////////////// Developer Start ////////////////////////////////////////////////////////
 const devController = require('../controller/admin/developerController');
-router.get('/dev/list', checkAdminLogin, middleHandler, devController.list);
-router.get('/dev/:dev_id?', checkAdminLogin, middleHandler, devController.load);
-router.post('/dev', checkAdminLogin, middleHandler, devController.saveOrUpdate);
-router.get('/dev/delete/:faq_id?', checkAdminLogin, middleHandler, devController.delete);
-//////////////////////////////////// FAQ ends ////////////////////////////////////////////////////////
+router.get('/developer/list', checkAdminLogin, middleHandler, devController.list);
+router.get('/developer/:dev_id?', checkAdminLogin, middleHandler, devController.load);
+router.post('/developer', checkAdminLogin, middleHandler, devController.saveOrUpdate);
+router.get('/developer/delete/:dev_id?', checkAdminLogin, middleHandler, devController.delete);
+//////////////////////////////////// DEveloper ends ////////////////////////////////////////////////////////
 
 //////////////////////////////////// FAQ Start ////////////////////////////////////////////////////////
 const faqController = require('../controller/admin/faqController');
@@ -175,6 +175,21 @@ router.post('/faq', checkAdminLogin, middleHandler, faqController.saveOrUpdate);
 router.get('/faq/delete/:faq_id?', checkAdminLogin, middleHandler, faqController.delete);
 //////////////////////////////////// FAQ ends ////////////////////////////////////////////////////////
 
+//////////////////////////////////// Blog Start ////////////////////////////////////////////////////////
+const blogController = require('../controller/admin/blogController');
+router.get('/blog/list', checkAdminLogin, middleHandler, blogController.list);
+router.get('/blog/:blog_id?', checkAdminLogin, middleHandler, blogController.load);
+router.post('/blog', checkAdminLogin, middleHandler, blogController.saveOrUpdate);
+router.get('/blog/delete/:blog_id?', checkAdminLogin, middleHandler, blogController.delete);
+//////////////////////////////////// Blog ends ////////////////////////////////////////////////////////
+
+//////////////////////////////////// BlogCat Start ////////////////////////////////////////////////////////
+const blogcatController = require('../controller/admin/blogcatController');
+router.get('/blog_category/list', checkAdminLogin, middleHandler, blogcatController.list);
+router.get('/blog_category/:blg_cat_id?', checkAdminLogin, middleHandler, blogcatController.load);
+router.post('/blog_category', checkAdminLogin, middleHandler, blogcatController.saveOrUpdate);
+router.get('/blog_category/delete/:blg_cat_id?', checkAdminLogin, middleHandler, blogcatController.delete);
+//////////////////////////////////// BlogCat ends ////////////////////////////////////////////////////////
 
 
 module.exports = router;
