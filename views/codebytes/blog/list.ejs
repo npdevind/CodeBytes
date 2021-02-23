@@ -41,20 +41,28 @@
 
 
         <div class="row" data-aos="fade-up" data-aos-delay="300">
-          <% arrBlogCatData.forEach(function(val){ %>
-            <div class="col-lg-3 col-md-4">
-              <div class="icon-box">
-                <!-- <i class="ri-store-line" style="color: #ffbb2c;"></i> -->
-                <%
-                var image = 'catgory_blog/'+val.blg_cat_id+'/'+val.image;
-                if(helper.isFileExistsIn(image)) image = adminbaseurl+'web-contents/'+  image;
-                else image = baseurl + "user.png";
-                %>
-                <img src="<%=image %>" style="height: 35px;">
-                <h2><a class="npdes" href="<%= baseurl %>blogs" target="_blank"><%=val.title%></a></h2>
-              </div>
-            </div>
+          <% if(arrBlogData !=''){ %>
+            <% arrBlogData.forEach(function(val){ %>
+             
             <% }) %>
+          <% }else{ %>
+            <% if(arrBlogCatData !=''){ %>
+              <% arrBlogCatData.forEach(function(val){ %>
+                <div class="col-lg-3 col-md-4">
+                  <div class="icon-box">
+                    <!-- <i class="ri-store-line" style="color: #ffbb2c;"></i> -->
+                    <% var image='catgory_blog/' +val.blg_cat_id+'/'+val.image; if(helper.isFileExistsIn(image))
+                      image=adminbaseurl+'web-contents/'+ image; else image=baseurl + "user.png" ; %>
+                      <img src="<%=image %>" style="height: 35px;">
+                      <h2><a class="npdes" href="<%= baseurl %>blog/<%= val.blg_cat_id %>">
+                          <%=val.title%>
+                        </a></h2>
+                  </div>
+                </div>
+              <% }) %>
+            <% } %>           
+          <% } %>
+          
         </div>
       </div>
     </section>

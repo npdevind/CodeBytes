@@ -22,11 +22,25 @@ var sequelize = new Sequelize(
 
 
 exports.list = async function(req,res){
-    var contactTableDetails = await models.ContactUs.findOne({where:{status:'Yes'}});
-    var blogcatTableDetails = await models.BlogCategory.findAll({where:{status:'Yes'}});
-    return res.render("codebytes/blog/list",{
-        contactTableDetails :contactTableDetails ? contactTableDetails :'',        
-        arrBlogCatData : blogcatTableDetails ? blogcatTableDetails: '',
-        helper : helper
-    });
+    var cat_id = req.params.cat_id;
+    if(cat_id !='' && cat_id != undefined){
+        var contactTableDetails = await models.ContactUs.findOne({where:{status:'Yes'}});
+        var blogTableDetails = await models.Blog.findAll({where:{category_id:cat_id}});
+        return res.render("codebytes/blog/list",{
+            contactTableDetails :contactTableDetails ? contactTableDetails :'',        
+            arrBlogData : blogTableDetails ? blogTableDetails: '',
+            arrBlogCatData : '',
+            helper : helper
+        });
+    }else{
+        var contactTableDetails = await models.ContactUs.findOne({where:{status:'Yes'}});
+        var blogcatTableDetails = await models.BlogCategory.findAll({where:{status:'Yes'}});
+        return res.render("codebytes/blog/list",{
+            contactTableDetails :contactTableDetails ? contactTableDetails :'',        
+            arrBlogCatData : blogcatTableDetails ? blogcatTableDetails: '',
+            arrBlogData : '',
+            helper : helper
+        });
+    }
+    
 }

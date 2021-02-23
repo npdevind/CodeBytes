@@ -8,9 +8,6 @@ const email = require('../controller/codebytes/contactusemailController');
 router.post('/send',email.email);
 
 const blog = require('../controller/codebytes/blogController'); 
-router.get('/blog',blog.list);
-
-const blogs = require('../controller/codebytes/blogcatController'); 
-router.get('/blogs',blogs.list);
+router.get('/blog/:cat_id?',blog.list);
 
 module.exports = router;
