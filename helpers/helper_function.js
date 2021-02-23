@@ -1,5 +1,5 @@
 /** This is helper function where we can uoload fiels of every modules also file path will set where
- * Developer : NILMONI PATRA @Bluehorse
+ * Developer : NILMONI PATRA 
  */
 const formidable = require('formidable');
 const glob = require("glob");
